@@ -11,7 +11,8 @@ class ItemCard extends StatelessWidget {
     return CustomPaint(
       size: const Size(165, 241), // Adjust the size as needed
       painter: DiagonalShapePainter(),
-      child: SizedBox(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
         height: 240,
         width: 165,
         child: Column(
@@ -21,9 +22,27 @@ class ItemCard extends StatelessWidget {
               child: SvgPicture.asset(ImageConstants.kHeart),
             ),
             // Image.asset('name'),
-            const Text('accessory_cate'),
-            const Text('title'),
-            const Text('price'),
+            Text(
+              'accessory_cate',
+              style: TextStyle(
+                  fontSize: 13,
+                  color: ColorConstants.kDeactive,
+                  fontWeight: FontWeight.w500),
+            ),
+            const Text(
+              'title',
+              style: TextStyle(
+                  fontSize: 15,
+                  color: ColorConstants.kWhite,
+                  fontWeight: FontWeight.w700),
+            ),
+            Text(
+              'price',
+              style: TextStyle(
+                  fontSize: 13,
+                  color: ColorConstants.kDeactive,
+                  fontWeight: FontWeight.w500),
+            ),
           ],
         ),
       ),

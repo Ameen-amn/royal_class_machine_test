@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
+import 'package:royal_class/presentation/home_screen/widget/background_shape.dart';
 import 'package:royal_class/presentation/home_screen/widget/carousel_card.dart';
 import 'package:royal_class/presentation/home_screen/widget/item_card.dart';
+import 'package:royal_class/presentation/home_screen/widget/bottom_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,23 +15,36 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstants.kBackgroundColor,
-        title: const Text('Choose your Bike'),
+        foregroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        title: const Text(
+          'Choose your Bike',
+          style: TextStyle(color: ColorConstants.kWhite),
+        ),
         actions: [
           CustomIconButton(icon: ImageConstants.kSearchIcon, onTap: () {})
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CarouselCard(),
-              ItemCard(),
-            ],
+      backgroundColor: ColorConstants.kBackgroundColor,
+      body: const Stack(
+        children: [
+          BackgroundShape(),
+          Padding(
+            padding: EdgeInsets.all(20.0),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CarouselCard(),
+                  ItemCard(),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
+      bottomNavigationBar: const CustomBottomNavBar(),
     );
   }
 }

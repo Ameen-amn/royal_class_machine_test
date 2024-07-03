@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
@@ -13,34 +15,37 @@ class CarouselCard extends StatelessWidget {
       height: 350,
       child: Stack(
         children: [
-          Column(
-            children: [
-              CustomPaint(
-                size: const Size(
-                    double.infinity, 240), // Adjust the size as needed
-                painter: DiagonalShapePainter(),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 30, horizontal: 17),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                          height: 153,
-                          width: double.infinity,
-                          child: Image.asset(ImageConstants.kcycle)),
-                      const Text(
-                        '30% OFF',
-                        style: TextStyle(
-                            fontSize: 28,
-                            color: ColorConstants.klightGrey,
-                            fontWeight: FontWeight.w700),
-                      )
-                    ],
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: Column(
+              children: [
+                CustomPaint(
+                  size: const Size(
+                      double.infinity, 240), // Adjust the size as needed
+                  painter: DiagonalShapePainter(),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 30, horizontal: 17),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                            height: 153,
+                            width: double.infinity,
+                            child: Image.asset(ImageConstants.kcycle)),
+                        Text(
+                          '30% OFF',
+                          style: TextStyle(
+                              fontSize: 28,
+                              color: ColorConstants.kDeactive,
+                              fontWeight: FontWeight.w700),
+                        )
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Positioned(top: 280, child: CategoryBar())
         ],
