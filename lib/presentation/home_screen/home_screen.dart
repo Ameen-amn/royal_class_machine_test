@@ -3,9 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 import 'package:royal_class/presentation/home_screen/widget/background_shape.dart';
+import 'package:royal_class/presentation/home_screen/widget/bottom_nav_bar.dart';
 import 'package:royal_class/presentation/home_screen/widget/carousel_card.dart';
 import 'package:royal_class/presentation/home_screen/widget/item_card.dart';
-import 'package:royal_class/presentation/home_screen/widget/bottom_nav_bar.dart';
+import 'package:royal_class/presentation/pages/widget/detail_bottom_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -27,17 +28,20 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       backgroundColor: ColorConstants.kBackgroundColor,
-      body: const Stack(
+      body: Stack(
         children: [
-          BackgroundShape(),
+          const BackgroundShape(),
           Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CarouselCard(),
-                  ItemCard(),
+                  const CarouselCard(),
+                  ItemCard(
+                    onTap: () => Navigator.of(context)
+                        .pushNamed(DetailBottomBar.detailScreen),
+                  ),
                 ],
               ),
             ),

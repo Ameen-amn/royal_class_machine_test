@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 
-class BackgroundShape extends StatelessWidget {
-  const BackgroundShape({super.key});
+class BackgroundDetailShape extends StatelessWidget {
+  const BackgroundDetailShape({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,9 @@ class DiagonalShapePainter extends CustomPainter {
       ..style = PaintingStyle.fill;
     final RRect rrect = RRect.fromRectAndCorners(
       Rect.fromLTWH(0, 0, size.width, size.height),
-      topLeft: const Radius.circular(20),
-      topRight: const Radius.circular(20),
-      bottomRight: const Radius.circular(0),
+      topLeft: const Radius.circular(0),
+      topRight: const Radius.circular(0),
+      bottomRight: const Radius.circular(20),
       bottomLeft: const Radius.circular(20),
     );
 
@@ -50,8 +50,8 @@ class DiagonalShapePainter extends CustomPainter {
     // Define the custom path within the rounded rectangle
     Path path = Path();
     path.moveTo(0, size.height);
-    path.lineTo(size.width - size.width * 0.1, size.height * 0.1);
-    path.lineTo(size.width, size.height * 0.2);
+    path.lineTo(size.width, 0);
+    path.lineTo(size.width, size.height);
     path.lineTo(size.width, size.height);
     path.close();
     canvas.drawPath(path, paint);

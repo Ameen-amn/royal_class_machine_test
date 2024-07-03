@@ -10,10 +10,16 @@ class ColorConstants {
   static const Color kBlack = Color(0xff000000);
   static final Color kDeactive = kWhite.withOpacity(0.6);
   static const Color kBackgroundColor = Color(0xff242C3B);
+  static const Color kdetailBottomBar = Color(0xff262E3D);
+
   static final LinearGradient kCardGradient = LinearGradient(colors: [
     const Color(0xff363e51).withOpacity(0.6),
     const Color(0xff192e26).withOpacity(0.6)
   ], begin: Alignment.topCenter, end: Alignment.bottomCenter);
+  static const LinearGradient kDetailGradient = LinearGradient(
+      colors: [Color(0xff353f54), Color(0xff222834)],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter);
   static final LinearGradient kIconGradient = LinearGradient(colors: [
     const Color(0xff34c8e8).withOpacity(0.6),
     const Color(0xff4e4af2).withOpacity(0.6)

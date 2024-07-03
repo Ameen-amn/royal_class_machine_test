@@ -4,46 +4,50 @@ import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 
 class ItemCard extends StatelessWidget {
-  const ItemCard({super.key});
+  final VoidCallback onTap;
+  const ItemCard({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      size: const Size(165, 241), // Adjust the size as needed
-      painter: DiagonalShapePainter(),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
-        height: 240,
-        width: 165,
-        child: Column(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: SvgPicture.asset(ImageConstants.kHeart),
-            ),
-            // Image.asset('name'),
-            Text(
-              'accessory_cate',
-              style: TextStyle(
-                  fontSize: 13,
-                  color: ColorConstants.kDeactive,
-                  fontWeight: FontWeight.w500),
-            ),
-            const Text(
-              'title',
-              style: TextStyle(
-                  fontSize: 15,
-                  color: ColorConstants.kWhite,
-                  fontWeight: FontWeight.w700),
-            ),
-            Text(
-              'price',
-              style: TextStyle(
-                  fontSize: 13,
-                  color: ColorConstants.kDeactive,
-                  fontWeight: FontWeight.w500),
-            ),
-          ],
+    return InkWell(
+      onTap: onTap,
+      child: CustomPaint(
+        size: const Size(165, 241), // Adjust the size as needed
+        painter: DiagonalShapePainter(),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+          height: 240,
+          width: 165,
+          child: Column(
+            children: [
+              Align(
+                alignment: Alignment.topRight,
+                child: SvgPicture.asset(ImageConstants.kHeart),
+              ),
+              // Image.asset('name'),
+              Text(
+                'accessory_cate',
+                style: TextStyle(
+                    fontSize: 13,
+                    color: ColorConstants.kDeactive,
+                    fontWeight: FontWeight.w500),
+              ),
+              const Text(
+                'title',
+                style: TextStyle(
+                    fontSize: 15,
+                    color: ColorConstants.kWhite,
+                    fontWeight: FontWeight.w700),
+              ),
+              Text(
+                'price',
+                style: TextStyle(
+                    fontSize: 13,
+                    color: ColorConstants.kDeactive,
+                    fontWeight: FontWeight.w500),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
+import 'package:royal_class/presentation/core/image_constants.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   const CustomBottomNavBar({super.key});
@@ -19,12 +21,13 @@ class CustomBottomNavBar extends StatelessWidget {
               size: const Size(60, 60), // Adjust the size as needed
               painter: DiagonalShapePainter(),
               child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
-                height: 60,
-                width: 60,
-                // child:SvgPicture.asset('assetName')
-              ),
+                  decoration:
+                      BoxDecoration(gradient: ColorConstants.kIconGradient),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
+                  height: 60,
+                  width: 60,
+                  child: SvgPicture.asset(ImageConstants.kHeart)),
             ),
           ),
         ),

@@ -7,4 +7,5 @@ class ImageConstants {
   static const kRoad = '${iconBase}Road.svg';
   static const kUnion = '${iconBase}Union.svg';
   static const kHelmet = '${iconBase}helmet.svg';
+  static const kDownArrow = '${iconBase}arrow_down.svg';
 }
