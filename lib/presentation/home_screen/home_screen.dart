@@ -12,20 +12,20 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ColorConstants.kBackgroundColor,
         title: const Text('Choose your Bike'),
         actions: [
           CustomIconButton(icon: ImageConstants.kSearchIcon, onTap: () {})
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
+      body: const Padding(
+        padding: EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CarouselCard(),
-              //CategoryBar(),
-              const ItemCard(),
+              ItemCard(),
             ],
           ),
         ),
