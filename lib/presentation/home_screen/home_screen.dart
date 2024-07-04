@@ -5,7 +5,6 @@ import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 import 'package:royal_class/presentation/core/widget/gradient_icon_button.dart';
 import 'package:royal_class/presentation/description_page/description_screen.dart';
-import 'package:royal_class/presentation/description_page/widget/detail_bottom_bar.dart';
 import 'package:royal_class/presentation/home_screen/widget/background_shape.dart';
 import 'package:royal_class/presentation/home_screen/widget/bottom_nav_bar.dart';
 import 'package:royal_class/presentation/home_screen/widget/carousel_card.dart';
@@ -59,32 +58,43 @@ class _HomeScreenState extends State<HomeScreen> {
                   const CarouselCard(),
                   BlocBuilder<ProductBloc, ProductState>(
                     builder: (context, state) {
-                      return GridView.builder(
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisSpacing: 20,
-                                  mainAxisSpacing: 10,
-                                  childAspectRatio: 3 / 5,
-                                  crossAxisCount: 2),
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Transform.translate(
-                              offset: Offset(0, index % 2 != 0 ? -30 : 0),
-                              child: ItemCard(
-                                product: state.productList?[index],
-                                onTap: () {
-                                  BlocProvider.of<ProductBloc>(context).add(
-                                      ProductEvent.fetchProductDetail(
-                                          id: state.productList?[index].id ??
-                                              0));
-                                  Navigator.of(context)
-                                      .pushNamed(DetailScreen.detailScreen);
-                                },
-                              ),
-                            );
-                          });
+                      if (state.isLoading) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            color: ColorConstants.kSkyBlue,
+                            strokeWidth: 5,
+                          ),
+                        );
+                      }
+                      if (state.isLoaded) {
+                        return GridView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisSpacing: 20,
+                                    mainAxisSpacing: 10,
+                                    childAspectRatio: 3 / 5,
+                                    crossAxisCount: 2),
+                            itemCount: 5,
+                            itemBuilder: (context, index) {
+                              return Transform.translate(
+                                offset: Offset(0, index % 2 != 0 ? -30 : 0),
+                                child: ItemCard(
+                                  product: state.productList?[index],
+                                  onTap: () {
+                                    BlocProvider.of<ProductBloc>(context).add(
+                                        ProductEvent.fetchProductDetail(
+                                            id: state.productList?[index].id ??
+                                                0));
+                                    Navigator.of(context)
+                                        .pushNamed(DetailScreen.detailScreen);
+                                  },
+                                ),
+                              );
+                            });
+                      }
+                      return const SizedBox();
                     },
                   ),
                 ],

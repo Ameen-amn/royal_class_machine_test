@@ -54,7 +54,7 @@ class DetailScreen extends StatelessWidget {
                   const Spacer(),
                   DetailWidget(
                     title: state.selectedProduct?.title ?? '',
-                    description: state.selectedProduct?.title ?? '',
+                    description: state.selectedProduct?.description ?? '',
                   )
                 ],
               )

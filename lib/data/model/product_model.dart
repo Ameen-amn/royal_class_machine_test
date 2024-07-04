@@ -3,6 +3,7 @@ import 'package:royal_class/domain/entity/product_entity.dart';
 class ProductModel extends ProductEntity {
   ProductModel(
       {required super.title,
+      required super.description,
       required super.category,
       required super.price,
       required super.image,
@@ -12,6 +13,7 @@ class ProductModel extends ProductEntity {
     return ProductModel(
         id: json['id'],
         title: json['title'],
+        description: json['description'],
         category: json['category']['name'],
         price: json['price'],
         image: json['images']);
