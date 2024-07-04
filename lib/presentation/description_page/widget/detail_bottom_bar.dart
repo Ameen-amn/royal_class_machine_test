@@ -20,17 +20,31 @@ class DetailBottomBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text('1855'),
+              const Text(
+                '\$ 1855',
+                style: TextStyle(
+                    color: ColorConstants.kSkyBlue,
+                    fontWeight: FontWeight.w400),
+              ),
               DecoratedBox(
-                decoration:
-                    BoxDecoration(gradient: ColorConstants.kIconGradient),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    gradient: ColorConstants.kIconGradient),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,
                         surfaceTintColor: Colors.transparent),
                     onPressed: () {},
-                    child: const Text('Add to Cart')),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        'Add to Cart',
+                        style: TextStyle(
+                            color: ColorConstants.kWhite,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    )),
               )
             ],
           ),
