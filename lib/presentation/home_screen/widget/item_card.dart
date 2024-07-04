@@ -1,46 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:royal_class/domain/entity/product_entity.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 
 class ItemCard extends StatelessWidget {
   final VoidCallback onTap;
-  const ItemCard({super.key, required this.onTap});
+  final ProductEntity? product;
+  const ItemCard({super.key, required this.onTap, required this.product});
 
   @override
   Widget build(BuildContext context) {
+    print(product?.image[0]);
     return InkWell(
       onTap: onTap,
       child: CustomPaint(
-        size: const Size(165, 241), 
+        size: const Size(165, 300),
         painter: DiagonalShapePainter(),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
-          height: 240,
           width: 165,
+          height: 300,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                alignment: Alignment.topRight,
-                child: SvgPicture.asset(ImageConstants.kHeart),
-              ),
-              // Image.asset('name'),
+                  alignment: Alignment.topRight,
+                  child: ShaderMask(
+                    blendMode: BlendMode.srcIn,
+                    shaderCallback: (Rect bounds) {
+                      return ColorConstants.kIconGradient.createShader(
+                          Rect.fromLTWH(0, 0, bounds.width, bounds.height));
+                    },
+                    child: SvgPicture.asset(
+                      ImageConstants.kHeart,
+                    ),
+                  )),
+              Image.network(product?.image[0] ?? ''),
               Text(
-                'accessory_cate',
+                product?.category ?? '',
                 style: TextStyle(
                     fontSize: 13,
                     color: ColorConstants.kDeactive,
                     fontWeight: FontWeight.w500),
               ),
-              const Text(
-                'title',
-                style: TextStyle(
+              Text(
+                product?.title ?? 'title',
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
                     fontSize: 15,
                     color: ColorConstants.kWhite,
                     fontWeight: FontWeight.w700),
               ),
               Text(
-                'price',
+                '\$${product?.price.toString()}',
                 style: TextStyle(
                     fontSize: 13,
                     color: ColorConstants.kDeactive,
@@ -82,10 +95,7 @@ class DiagonalShapePainter extends CustomPainter {
 
     // Define the custom path within the rounded rectangle
     Path path = Path();
-    path.moveTo(
-        0,
-        size.height *
-            sideHeightTopPercentage); 
+    path.moveTo(0, size.height * sideHeightTopPercentage);
     path.lineTo(
         size.width - rrect.trRadiusX, 0); // Top-right corner before radius
     path.quadraticBezierTo(

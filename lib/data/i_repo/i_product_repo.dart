@@ -1,7 +1,10 @@
+import 'package:injectable/injectable.dart';
 import 'package:royal_class/data/data_source/remote_data.dart';
 import 'package:royal_class/domain/entity/product_entity.dart';
 import 'package:royal_class/domain/repository/product_repository.dart';
 
+
+@Injectable(as: ProductRepository)
 class IProductRepo implements ProductRepository {
   final ProdcutRemoteDataSoruce prodcutRemoteDataSoruce;
 
@@ -13,6 +16,7 @@ class IProductRepo implements ProductRepository {
 
   @override
   Future<List<ProductEntity>> getProducts(int page) async {
+    print('caall');
     return await prodcutRemoteDataSoruce.getProducts(5);
   }
 }
