@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 
 class DetailBottomBar extends StatelessWidget {
@@ -20,9 +22,9 @@ class DetailBottomBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-               Text(
+              Text(
                 '\$ $prince',
-                style: TextStyle(
+                style: const TextStyle(
                     color: ColorConstants.kSkyBlue,
                     fontWeight: FontWeight.w400),
               ),
@@ -35,7 +37,13 @@ class DetailBottomBar extends StatelessWidget {
                         backgroundColor: Colors.transparent,
                         shadowColor: Colors.transparent,
                         surfaceTintColor: Colors.transparent),
-                    onPressed: () {},
+                    onPressed: () {
+                      BlocProvider.of<ProductBloc>(context)
+                          .add(const ProductEvent.addToCart());
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        
+                          content: Text("Added to Cart")));
+                    },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8.0),
                       child: Text(

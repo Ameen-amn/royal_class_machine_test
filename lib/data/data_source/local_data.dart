@@ -14,7 +14,7 @@ class ProductRemoteDataSourceImpl implements ProdcutLocalDataSoruce {
   Future<ProductModel> getProductDetail(String id) async {
     if (_cacheBox.isNotEmpty) {
       final ProductModel product = ProductModel.fromJson(_cacheBox.get(id));
-      print('get $product');
+    
       return product;
     } else {
       throw Exception('Failed to load product detail');

@@ -3,15 +3,23 @@ import 'package:flutter_svg/svg.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 
-class CustomBottomNavBar extends StatelessWidget {
+class CustomBottomNavBar extends StatefulWidget {
   CustomBottomNavBar({super.key});
 
+  @override
+  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
+}
+
+class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   final List<String> _bottomNavBar = [
+    ImageConstants.kbiCycle,
     ImageConstants.kMap,
     ImageConstants.kCart,
     ImageConstants.kProfile,
     ImageConstants.kDoc,
   ];
+
+  final int selectedItem = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +32,8 @@ class CustomBottomNavBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: List.generate(
-            5,
-            (index) => index == 0
+            _bottomNavBar.length,
+            (index) => index == selectedItem
                 ? Transform.translate(
                     offset: const Offset(0, -15),
                     child: CustomPaint(
@@ -41,7 +49,7 @@ class CustomBottomNavBar extends StatelessWidget {
                           child: SvgPicture.asset(ImageConstants.kbiCycle)),
                     ),
                   )
-                : SvgPicture.asset(_bottomNavBar[index - 1]),
+                : SvgPicture.asset(_bottomNavBar[index]),
           ),
         ),
       ),
@@ -63,7 +71,6 @@ class DiagonalShapePainter extends CustomPainter {
           .createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
 
- 
     final RRect rrect = RRect.fromRectAndCorners(
       Rect.fromLTWH(0, 0, size.width, size.height),
       topLeft: const Radius.circular(0),

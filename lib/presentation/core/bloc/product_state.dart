@@ -8,6 +8,7 @@ class ProductState with _$ProductState {
     @Default(false) bool hasReachedMax,
     @Default(false) bool loadMore,
     List<ProductEntity>? productList,
+    List<ProductEntity>? cartList,
     ProductEntity? selectedProduct
   }) = _ProductState;
   factory ProductState.initial() => const ProductState();

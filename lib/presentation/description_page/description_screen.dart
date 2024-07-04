@@ -43,26 +43,23 @@ class DetailScreen extends StatelessWidget {
           body: Stack(
             children: [
               const BackgroundDetailShape(),
-              Column(
-                children: [
-                  SizedBox(
-                      // width: 288,
-                      height: 208,
-                      child: CarouselSlider.builder(
-                          itemCount: state.selectedProduct?.image.length,
-                          itemBuilder: (context, index, realIndex) {
-                            return Image.asset(
-                                state.selectedProduct?.image[index],
-                                fit: BoxFit.cover);
-                          },
-                          options: CarouselOptions())),
-                  const Spacer(),
-                  DetailWidget(
-                    title: state.selectedProduct?.title ?? '',
-                    description: state.selectedProduct?.description ?? '',
-                  )
-                ],
-              )
+              state.isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                          color: ColorConstants.kSkyBlue, strokeWidth: 5),
+                    )
+                  : Column(
+                      children: [
+                        CustomCarouselSlider(
+                          imageList: state.selectedProduct?.image ?? [],
+                        ),
+                        const Spacer(),
+                        DetailWidget(
+                          title: state.selectedProduct?.title ?? '',
+                          description: state.selectedProduct?.description ?? '',
+                        )
+                      ],
+                    )
             ],
           ),
           bottomNavigationBar: DetailBottomBar(
@@ -70,6 +67,66 @@ class DetailScreen extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class CustomCarouselSlider extends StatefulWidget {
+  final List<dynamic> imageList;
+  const CustomCarouselSlider({
+    super.key,
+    required this.imageList,
+  });
+
+  @override
+  State<CustomCarouselSlider> createState() => _CustomCarouselSliderState();
+}
+
+class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
+  int currentIndex = 0;
+  final CarouselController _carouselController = CarouselController();
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(
+            // width: 288,
+            height: 208,
+            child: CarouselSlider.builder(
+                itemCount: widget.imageList.length,
+                itemBuilder: (context, index, realIndex) {
+                  return Image.network(widget.imageList[index],
+                      fit: BoxFit.cover);
+                },
+                options: CarouselOptions(
+                    autoPlay: true,
+                    onPageChanged: (index, reason) =>
+                        setState(() => currentIndex = index),
+                    autoPlayAnimationDuration: const Duration(seconds: 3)))),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: widget.imageList.asMap().entries.map((entry) {
+            return GestureDetector(
+              onTap: () => _carouselController.animateToPage(entry.key),
+              child: Container(
+                width: currentIndex == entry.key ? 7.0 : 7.0,
+                height: 7.0,
+                margin: EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: currentIndex == entry.key ? 2 : 4.0),
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    // shape: currentIndex == entry.key
+                    //     ? BoxShape.rectangle
+                    //     : BoxShape.circle,
+                    color: currentIndex == entry.key
+                        ? ColorConstants.kWhite
+                        : ColorConstants.kDeactive),
+              ),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }
