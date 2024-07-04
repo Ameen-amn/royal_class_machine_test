@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
@@ -11,9 +12,11 @@ import 'package:royal_class/presentation/home_screen/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-    Hive.registerAdapter(ItemModelAdapter());
+  Hive.registerAdapter(ItemModelAdapter());
   await Hive.openBox('cacheBox');
   configureDependencies();
+
+  // await Firebase.initializeApp(options: FirebaseOptions.);
   runApp(const MyApp());
 }
 

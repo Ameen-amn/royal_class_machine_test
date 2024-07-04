@@ -9,7 +9,7 @@ class ProductModel extends ProductEntity {
       required super.image,
       required super.id});
 
-  factory ProductModel.fromJson(Map<String, dynamic> json) {
+  factory ProductModel.fromJson(Map<dynamic, dynamic> json) {
     return ProductModel(
         id: json['id'],
         title: json['title'],

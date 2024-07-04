@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
@@ -47,10 +48,14 @@ class DetailScreen extends StatelessWidget {
                   SizedBox(
                       // width: 288,
                       height: 208,
-                      child: Image.asset(
-                        ImageConstants.kcycle,
-                        fit: BoxFit.cover,
-                      )),
+                      child: CarouselSlider.builder(
+                          itemCount: state.selectedProduct?.image.length,
+                          itemBuilder: (context, index, realIndex) {
+                            return Image.asset(
+                                state.selectedProduct?.image[index],
+                                fit: BoxFit.cover);
+                          },
+                          options: CarouselOptions())),
                   const Spacer(),
                   DetailWidget(
                     title: state.selectedProduct?.title ?? '',
