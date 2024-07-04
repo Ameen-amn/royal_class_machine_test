@@ -9,7 +9,7 @@ class ProdutUsecase {
   ProdutUsecase({required this.productRepository});
 
   Future<List<ProductEntity>> getAllProduct() async {
-    return productRepository.getProducts(5);
+    return productRepository.getProducts();
   }
 
   Future<ProductEntity> getProductDetail({required int id}) async {

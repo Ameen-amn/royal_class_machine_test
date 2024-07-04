@@ -23,7 +23,7 @@ class IProductRepo implements ProductRepository {
   }
 
   @override
-  Future<List<ProductEntity>> getProducts(int page) async {
+  Future<List<ProductEntity>> getProducts() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult.first == ConnectivityResult.none) {
       return await prodcutLocalDataSoruce.getProducts();
