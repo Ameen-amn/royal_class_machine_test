@@ -12,13 +12,13 @@ class CustomBottomNavBar extends StatelessWidget {
       width: double.infinity,
       height: 103,
       child: CustomPaint(
-        size: const Size(double.infinity, 103), // Adjust the size as needed
+        size: const Size(double.infinity, 103), 
         painter: DiagonalShapePainter(),
         child: Row(
           children: List.generate(
             5,
             (index) => CustomPaint(
-              size: const Size(60, 60), // Adjust the size as needed
+              size: const Size(60, 60), 
               painter: DiagonalShapePainter(),
               child: Container(
                   decoration:
@@ -60,7 +60,6 @@ class DiagonalShapePainter extends CustomPainter {
     );
     canvas.clipRRect(rrect);
 
-    // Define the custom path within the rounded rectangle
     Path path = Path();
     path.moveTo(0, size.height * 0.3);
     path.lineTo(size.width, 0);
@@ -68,7 +67,7 @@ class DiagonalShapePainter extends CustomPainter {
     path.lineTo(0, size.height);
     path.close();
     canvas.drawPath(path, paint);
-    // Draw the border
+   
     canvas.drawPath(path, borderPaint);
   }
 
@@ -96,47 +95,38 @@ class BottomNavShape extends CustomPainter {
     const sideHeigtPerctange = 0.9;
     const sideHeightTopPercentage = 0.1;
     canvas.clipRRect(rrect);
-    // Define the border
-
-    // Paint borderPaint = Paint()
-    //   ..shader = ColorConstants.kBorderGradient
-    //       .createShader(Rect.fromLTWH(0, 0, size.width, size.height))
-    //   ..style = PaintingStyle.stroke
-    //   ..strokeWidth = 4;
-
-    // Define the custom path within the rounded rectangle
+   
     Path path = Path();
     path.moveTo(
         0,
         size.height *
-            sideHeightTopPercentage); // Start 20% down on the left side
+            sideHeightTopPercentage); 
     path.lineTo(
-        size.width - rrect.trRadiusX, 0); // Top-right corner before radius
+        size.width - rrect.trRadiusX, 0);
     path.quadraticBezierTo(
-        size.width, 0, size.width, rrect.trRadiusY); // Top-right curve
+        size.width, 0, size.width, rrect.trRadiusY);
     path.lineTo(size.width,
-        size.height * sideHeigtPerctange - rrect.brRadiusY); // Right side
+        size.height * sideHeigtPerctange - rrect.brRadiusY);
     path.quadraticBezierTo(
         size.width,
         size.height * sideHeigtPerctange,
         size.width - rrect.brRadiusX,
-        size.height * sideHeigtPerctange); // Bottom-right curve
-    path.lineTo(rrect.blRadiusX, size.height); // Bottom-left side
+        size.height * sideHeigtPerctange); 
+    path.lineTo(rrect.blRadiusX, size.height);
     path.quadraticBezierTo(
-        0, size.height, 0, size.height - rrect.blRadiusY); // Bottom-left curve
+        0, size.height, 0, size.height - rrect.blRadiusY);
     path.lineTo(0,
-        size.height * sideHeightTopPercentage + rrect.tlRadiusY); // Left side
+        size.height * sideHeightTopPercentage + rrect.tlRadiusY);
     path.quadraticBezierTo(
         0,
         size.height * sideHeightTopPercentage,
         rrect.tlRadiusX,
-        size.height * sideHeightTopPercentage - 5); // Top-left curve
+        size.height * sideHeightTopPercentage - 5);
     path.close();
 
-    // Draw the path
+  
     canvas.drawPath(path, paint);
-    // Draw the border
-    // canvas.drawPath(path, borderPaint);
+    
   }
 
   @override

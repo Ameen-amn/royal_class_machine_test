@@ -12,7 +12,7 @@ class ItemCard extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: CustomPaint(
-        size: const Size(165, 241), // Adjust the size as needed
+        size: const Size(165, 241), 
         painter: DiagonalShapePainter(),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
@@ -85,7 +85,7 @@ class DiagonalShapePainter extends CustomPainter {
     path.moveTo(
         0,
         size.height *
-            sideHeightTopPercentage); // Start 20% down on the left side
+            sideHeightTopPercentage); 
     path.lineTo(
         size.width - rrect.trRadiusX, 0); // Top-right corner before radius
     path.quadraticBezierTo(

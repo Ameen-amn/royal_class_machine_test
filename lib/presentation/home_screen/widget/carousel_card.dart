@@ -78,7 +78,6 @@ class DiagonalShapePainter extends CustomPainter {
     const sideHeigtPerctange = 0.8;
 
     canvas.clipRRect(rrect);
-    // Define the custom path within the rounded rectangle
     Path path = Path();
     path.moveTo(rrect.tlRadiusX, 0); // Top-left corner after radius
     path.lineTo(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 import 'package:royal_class/presentation/home_screen/home_screen.dart';
-import 'package:royal_class/presentation/pages/widget/background_detail.dart';
-import 'package:royal_class/presentation/pages/widget/detail_bottom_bar.dart';
-import 'package:royal_class/presentation/pages/widget/detail_widget.dart';
+import 'package:royal_class/presentation/description_page/widget/background_detail.dart';
+import 'package:royal_class/presentation/description_page/widget/detail_bottom_bar.dart';
+import 'package:royal_class/presentation/description_page/widget/detail_widget.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});

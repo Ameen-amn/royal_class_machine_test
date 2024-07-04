@@ -6,7 +6,7 @@ import 'package:royal_class/presentation/home_screen/widget/background_shape.dar
 import 'package:royal_class/presentation/home_screen/widget/bottom_nav_bar.dart';
 import 'package:royal_class/presentation/home_screen/widget/carousel_card.dart';
 import 'package:royal_class/presentation/home_screen/widget/item_card.dart';
-import 'package:royal_class/presentation/pages/widget/detail_bottom_bar.dart';
+import 'package:royal_class/presentation/description_page/widget/detail_bottom_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

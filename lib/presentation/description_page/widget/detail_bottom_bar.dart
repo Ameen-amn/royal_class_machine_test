@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 
 class DetailBottomBar extends StatelessWidget {
-  static final String detailScreen = '/DetailScreen';
+  static const String detailScreen = '/DetailScreen';
   const DetailBottomBar({super.key});
 
   @override
