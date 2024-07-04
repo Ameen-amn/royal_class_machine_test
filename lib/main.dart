@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:royal_class/data/model/hive_model.dart';
 import 'package:royal_class/injectable.dart';
 import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/description_page/description_screen.dart';
 import 'package:royal_class/presentation/home_screen/home_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+    Hive.registerAdapter(ItemModelAdapter());
+  await Hive.openBox('cacheBox');
   configureDependencies();
   runApp(const MyApp());
 }
