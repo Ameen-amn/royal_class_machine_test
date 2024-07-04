@@ -5,5 +5,6 @@ class ProductEvent with _$ProductEvent{
    const factory ProductEvent.initial() = _Started;
    const factory ProductEvent.fetchProducts() = _FetchProduts;
    const factory ProductEvent.fetchProductDetail({required int id}) = _FetchProdutDetail;
+   const factory ProductEvent.lazyLoadProducts() = _LazyProductLoading;
 }
 

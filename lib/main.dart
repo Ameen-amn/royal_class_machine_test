@@ -4,7 +4,6 @@ import 'package:royal_class/injectable.dart';
 import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/description_page/description_screen.dart';
-import 'package:royal_class/presentation/description_page/widget/detail_bottom_bar.dart';
 import 'package:royal_class/presentation/home_screen/home_screen.dart';
 
 void main() {
@@ -20,7 +19,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => getIt<ProductBloc>())],
+      providers: [
+        BlocProvider(
+            create: (_) => getIt<ProductBloc>()
+              ..add(const ProductEvent.lazyLoadProducts()))
+      ],
       child: MaterialApp(
         title: 'Royal Class',
         debugShowCheckedModeBanner: false,

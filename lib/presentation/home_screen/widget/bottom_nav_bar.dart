@@ -63,7 +63,7 @@ class DiagonalShapePainter extends CustomPainter {
           .createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
 
-    const sideHeigtPerctange = 0.8;
+ 
     final RRect rrect = RRect.fromRectAndCorners(
       Rect.fromLTWH(0, 0, size.width, size.height),
       topLeft: const Radius.circular(0),

@@ -21,6 +21,7 @@ mixin _$ProductEvent {
     required TResult Function() initial,
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
+    required TResult Function() lazyLoadProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$ProductEvent {
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
+    TResult? Function()? lazyLoadProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$ProductEvent {
     TResult Function()? initial,
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
+    TResult Function()? lazyLoadProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$ProductEvent {
     required TResult Function(_Started value) initial,
     required TResult Function(_FetchProduts value) fetchProducts,
     required TResult Function(_FetchProdutDetail value) fetchProductDetail,
+    required TResult Function(_LazyProductLoading value) lazyLoadProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$ProductEvent {
     TResult? Function(_Started value)? initial,
     TResult? Function(_FetchProduts value)? fetchProducts,
     TResult? Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult? Function(_LazyProductLoading value)? lazyLoadProducts,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$ProductEvent {
     TResult Function(_Started value)? initial,
     TResult Function(_FetchProduts value)? fetchProducts,
     TResult Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult Function(_LazyProductLoading value)? lazyLoadProducts,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -121,6 +127,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() initial,
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
+    required TResult Function() lazyLoadProducts,
   }) {
     return initial();
   }
@@ -131,6 +138,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
+    TResult? Function()? lazyLoadProducts,
   }) {
     return initial?.call();
   }
@@ -141,6 +149,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? initial,
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
+    TResult Function()? lazyLoadProducts,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -155,6 +164,7 @@ class _$StartedImpl implements _Started {
     required TResult Function(_Started value) initial,
     required TResult Function(_FetchProduts value) fetchProducts,
     required TResult Function(_FetchProdutDetail value) fetchProductDetail,
+    required TResult Function(_LazyProductLoading value) lazyLoadProducts,
   }) {
     return initial(this);
   }
@@ -165,6 +175,7 @@ class _$StartedImpl implements _Started {
     TResult? Function(_Started value)? initial,
     TResult? Function(_FetchProduts value)? fetchProducts,
     TResult? Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult? Function(_LazyProductLoading value)? lazyLoadProducts,
   }) {
     return initial?.call(this);
   }
@@ -175,6 +186,7 @@ class _$StartedImpl implements _Started {
     TResult Function(_Started value)? initial,
     TResult Function(_FetchProduts value)? fetchProducts,
     TResult Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult Function(_LazyProductLoading value)? lazyLoadProducts,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -229,6 +241,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     required TResult Function() initial,
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
+    required TResult Function() lazyLoadProducts,
   }) {
     return fetchProducts();
   }
@@ -239,6 +252,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
+    TResult? Function()? lazyLoadProducts,
   }) {
     return fetchProducts?.call();
   }
@@ -249,6 +263,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     TResult Function()? initial,
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
+    TResult Function()? lazyLoadProducts,
     required TResult orElse(),
   }) {
     if (fetchProducts != null) {
@@ -263,6 +278,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     required TResult Function(_Started value) initial,
     required TResult Function(_FetchProduts value) fetchProducts,
     required TResult Function(_FetchProdutDetail value) fetchProductDetail,
+    required TResult Function(_LazyProductLoading value) lazyLoadProducts,
   }) {
     return fetchProducts(this);
   }
@@ -273,6 +289,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     TResult? Function(_Started value)? initial,
     TResult? Function(_FetchProduts value)? fetchProducts,
     TResult? Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult? Function(_LazyProductLoading value)? lazyLoadProducts,
   }) {
     return fetchProducts?.call(this);
   }
@@ -283,6 +300,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     TResult Function(_Started value)? initial,
     TResult Function(_FetchProduts value)? fetchProducts,
     TResult Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult Function(_LazyProductLoading value)? lazyLoadProducts,
     required TResult orElse(),
   }) {
     if (fetchProducts != null) {
@@ -364,6 +382,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     required TResult Function() initial,
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
+    required TResult Function() lazyLoadProducts,
   }) {
     return fetchProductDetail(id);
   }
@@ -374,6 +393,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
+    TResult? Function()? lazyLoadProducts,
   }) {
     return fetchProductDetail?.call(id);
   }
@@ -384,6 +404,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     TResult Function()? initial,
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
+    TResult Function()? lazyLoadProducts,
     required TResult orElse(),
   }) {
     if (fetchProductDetail != null) {
@@ -398,6 +419,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     required TResult Function(_Started value) initial,
     required TResult Function(_FetchProduts value) fetchProducts,
     required TResult Function(_FetchProdutDetail value) fetchProductDetail,
+    required TResult Function(_LazyProductLoading value) lazyLoadProducts,
   }) {
     return fetchProductDetail(this);
   }
@@ -408,6 +430,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     TResult? Function(_Started value)? initial,
     TResult? Function(_FetchProduts value)? fetchProducts,
     TResult? Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult? Function(_LazyProductLoading value)? lazyLoadProducts,
   }) {
     return fetchProductDetail?.call(this);
   }
@@ -418,6 +441,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     TResult Function(_Started value)? initial,
     TResult Function(_FetchProduts value)? fetchProducts,
     TResult Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult Function(_LazyProductLoading value)? lazyLoadProducts,
     required TResult orElse(),
   }) {
     if (fetchProductDetail != null) {
@@ -438,9 +462,125 @@ abstract class _FetchProdutDetail implements ProductEvent {
 }
 
 /// @nodoc
+abstract class _$$LazyProductLoadingImplCopyWith<$Res> {
+  factory _$$LazyProductLoadingImplCopyWith(_$LazyProductLoadingImpl value,
+          $Res Function(_$LazyProductLoadingImpl) then) =
+      __$$LazyProductLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LazyProductLoadingImplCopyWithImpl<$Res>
+    extends _$ProductEventCopyWithImpl<$Res, _$LazyProductLoadingImpl>
+    implements _$$LazyProductLoadingImplCopyWith<$Res> {
+  __$$LazyProductLoadingImplCopyWithImpl(_$LazyProductLoadingImpl _value,
+      $Res Function(_$LazyProductLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LazyProductLoadingImpl implements _LazyProductLoading {
+  const _$LazyProductLoadingImpl();
+
+  @override
+  String toString() {
+    return 'ProductEvent.lazyLoadProducts()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LazyProductLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() fetchProducts,
+    required TResult Function(int id) fetchProductDetail,
+    required TResult Function() lazyLoadProducts,
+  }) {
+    return lazyLoadProducts();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? fetchProducts,
+    TResult? Function(int id)? fetchProductDetail,
+    TResult? Function()? lazyLoadProducts,
+  }) {
+    return lazyLoadProducts?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? fetchProducts,
+    TResult Function(int id)? fetchProductDetail,
+    TResult Function()? lazyLoadProducts,
+    required TResult orElse(),
+  }) {
+    if (lazyLoadProducts != null) {
+      return lazyLoadProducts();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) initial,
+    required TResult Function(_FetchProduts value) fetchProducts,
+    required TResult Function(_FetchProdutDetail value) fetchProductDetail,
+    required TResult Function(_LazyProductLoading value) lazyLoadProducts,
+  }) {
+    return lazyLoadProducts(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? initial,
+    TResult? Function(_FetchProduts value)? fetchProducts,
+    TResult? Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult? Function(_LazyProductLoading value)? lazyLoadProducts,
+  }) {
+    return lazyLoadProducts?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? initial,
+    TResult Function(_FetchProduts value)? fetchProducts,
+    TResult Function(_FetchProdutDetail value)? fetchProductDetail,
+    TResult Function(_LazyProductLoading value)? lazyLoadProducts,
+    required TResult orElse(),
+  }) {
+    if (lazyLoadProducts != null) {
+      return lazyLoadProducts(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LazyProductLoading implements ProductEvent {
+  const factory _LazyProductLoading() = _$LazyProductLoadingImpl;
+}
+
+/// @nodoc
 mixin _$ProductState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isLoaded => throw _privateConstructorUsedError;
+  bool get hasReachedMax => throw _privateConstructorUsedError;
+  bool get loadMore => throw _privateConstructorUsedError;
   List<ProductEntity>? get productList => throw _privateConstructorUsedError;
   ProductEntity? get selectedProduct => throw _privateConstructorUsedError;
 
@@ -458,6 +598,8 @@ abstract class $ProductStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool isLoaded,
+      bool hasReachedMax,
+      bool loadMore,
       List<ProductEntity>? productList,
       ProductEntity? selectedProduct});
 }
@@ -477,6 +619,8 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
   $Res call({
     Object? isLoading = null,
     Object? isLoaded = null,
+    Object? hasReachedMax = null,
+    Object? loadMore = null,
     Object? productList = freezed,
     Object? selectedProduct = freezed,
   }) {
@@ -488,6 +632,14 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
       isLoaded: null == isLoaded
           ? _value.isLoaded
           : isLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadMore: null == loadMore
+          ? _value.loadMore
+          : loadMore // ignore: cast_nullable_to_non_nullable
               as bool,
       productList: freezed == productList
           ? _value.productList
@@ -512,6 +664,8 @@ abstract class _$$ProductStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool isLoaded,
+      bool hasReachedMax,
+      bool loadMore,
       List<ProductEntity>? productList,
       ProductEntity? selectedProduct});
 }
@@ -529,6 +683,8 @@ class __$$ProductStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? isLoaded = null,
+    Object? hasReachedMax = null,
+    Object? loadMore = null,
     Object? productList = freezed,
     Object? selectedProduct = freezed,
   }) {
@@ -540,6 +696,14 @@ class __$$ProductStateImplCopyWithImpl<$Res>
       isLoaded: null == isLoaded
           ? _value.isLoaded
           : isLoaded // ignore: cast_nullable_to_non_nullable
+              as bool,
+      hasReachedMax: null == hasReachedMax
+          ? _value.hasReachedMax
+          : hasReachedMax // ignore: cast_nullable_to_non_nullable
+              as bool,
+      loadMore: null == loadMore
+          ? _value.loadMore
+          : loadMore // ignore: cast_nullable_to_non_nullable
               as bool,
       productList: freezed == productList
           ? _value._productList
@@ -559,6 +723,8 @@ class _$ProductStateImpl implements _ProductState {
   const _$ProductStateImpl(
       {this.isLoading = false,
       this.isLoaded = false,
+      this.hasReachedMax = false,
+      this.loadMore = false,
       final List<ProductEntity>? productList,
       this.selectedProduct})
       : _productList = productList;
@@ -569,6 +735,12 @@ class _$ProductStateImpl implements _ProductState {
   @override
   @JsonKey()
   final bool isLoaded;
+  @override
+  @JsonKey()
+  final bool hasReachedMax;
+  @override
+  @JsonKey()
+  final bool loadMore;
   final List<ProductEntity>? _productList;
   @override
   List<ProductEntity>? get productList {
@@ -584,7 +756,7 @@ class _$ProductStateImpl implements _ProductState {
 
   @override
   String toString() {
-    return 'ProductState(isLoading: $isLoading, isLoaded: $isLoaded, productList: $productList, selectedProduct: $selectedProduct)';
+    return 'ProductState(isLoading: $isLoading, isLoaded: $isLoaded, hasReachedMax: $hasReachedMax, loadMore: $loadMore, productList: $productList, selectedProduct: $selectedProduct)';
   }
 
   @override
@@ -596,6 +768,10 @@ class _$ProductStateImpl implements _ProductState {
                 other.isLoading == isLoading) &&
             (identical(other.isLoaded, isLoaded) ||
                 other.isLoaded == isLoaded) &&
+            (identical(other.hasReachedMax, hasReachedMax) ||
+                other.hasReachedMax == hasReachedMax) &&
+            (identical(other.loadMore, loadMore) ||
+                other.loadMore == loadMore) &&
             const DeepCollectionEquality()
                 .equals(other._productList, _productList) &&
             (identical(other.selectedProduct, selectedProduct) ||
@@ -603,8 +779,14 @@ class _$ProductStateImpl implements _ProductState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, isLoaded,
-      const DeepCollectionEquality().hash(_productList), selectedProduct);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      isLoaded,
+      hasReachedMax,
+      loadMore,
+      const DeepCollectionEquality().hash(_productList),
+      selectedProduct);
 
   @JsonKey(ignore: true)
   @override
@@ -617,6 +799,8 @@ abstract class _ProductState implements ProductState {
   const factory _ProductState(
       {final bool isLoading,
       final bool isLoaded,
+      final bool hasReachedMax,
+      final bool loadMore,
       final List<ProductEntity>? productList,
       final ProductEntity? selectedProduct}) = _$ProductStateImpl;
 
@@ -624,6 +808,10 @@ abstract class _ProductState implements ProductState {
   bool get isLoading;
   @override
   bool get isLoaded;
+  @override
+  bool get hasReachedMax;
+  @override
+  bool get loadMore;
   @override
   List<ProductEntity>? get productList;
   @override

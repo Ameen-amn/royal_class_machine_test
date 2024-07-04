@@ -5,6 +5,8 @@ class ProductState with _$ProductState {
   const factory ProductState({
     @Default(false) bool isLoading,
     @Default(false) bool isLoaded,
+    @Default(false) bool hasReachedMax,
+    @Default(false) bool loadMore,
     List<ProductEntity>? productList,
     ProductEntity? selectedProduct
   }) = _ProductState;

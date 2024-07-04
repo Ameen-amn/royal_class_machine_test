@@ -18,11 +18,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final ScrollController _scrollController = ScrollController();
   @override
   void initState() {
-    BlocProvider.of<ProductBloc>(context)
-        .add(const ProductEvent.fetchProducts());
+    _scrollController.addListener(_onScroll);
     super.initState();
+  }
+
+  void _onScroll() {
+    if (_scrollController.position.pixels ==
+        _scrollController.position.maxScrollExtent) {
+      print('event call');
+      BlocProvider.of<ProductBloc>(context)
+          .add(const ProductEvent.lazyLoadProducts());
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -52,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: SingleChildScrollView(
+              controller: _scrollController,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -62,38 +78,53 @@ class _HomeScreenState extends State<HomeScreen> {
                         return const Center(
                           child: CircularProgressIndicator(
                             color: ColorConstants.kSkyBlue,
-                            strokeWidth: 5,
+                            strokeWidth: 5
                           ),
                         );
                       }
                       if (state.isLoaded) {
-                        return GridView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisSpacing: 20,
-                                    mainAxisSpacing: 10,
-                                    childAspectRatio: 3 / 5,
-                                    crossAxisCount: 2),
-                            itemCount: 5,
-                            itemBuilder: (context, index) {
-                              return Transform.translate(
-                                offset: Offset(0, index % 2 != 0 ? -30 : 0),
-                                child: ItemCard(
-                                  product: state.productList?[index],
-                                  onTap: () {
-                                    BlocProvider.of<ProductBloc>(context).add(
-                                        ProductEvent.fetchProductDetail(
-                                            id: state.productList?[index].id ??
-                                                0));
-                                    Navigator.of(context)
-                                        .pushNamed(DetailScreen.detailScreen);
-                                  },
+                        return Column(
+                          children: [
+                            GridView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisSpacing: 20,
+                                        mainAxisSpacing: 10,
+                                        childAspectRatio: 3 / 5,
+                                        crossAxisCount: 2),
+                                itemCount: state.productList?.length,
+                                itemBuilder: (context, index) {
+                                  return Transform.translate(
+                                    offset: Offset(0, index % 2 != 0 ? -30 : 0),
+                                    child: ItemCard(
+                                      product: state.productList?[index],
+                                      onTap: () {
+                                        BlocProvider.of<ProductBloc>(context)
+                                            .add(
+                                                ProductEvent.fetchProductDetail(
+                                                    id: state
+                                                            .productList?[index]
+                                                            .id ??
+                                                        0));
+                                        Navigator.of(context).pushNamed(
+                                            DetailScreen.detailScreen);
+                                      },
+                                    ),
+                                  );
+                                }),
+                            if (state.loadMore)
+                              const Center(
+                                child: CircularProgressIndicator(
+                                  color: ColorConstants.kSkyBlue,
+                                  strokeWidth: 5
                                 ),
-                              );
-                            });
+                              )
+                          ],
+                        );
                       }
+
                       return const SizedBox();
                     },
                   ),
