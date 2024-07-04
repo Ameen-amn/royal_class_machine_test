@@ -21,7 +21,8 @@ class DetailScreen extends StatelessWidget {
             leading: Container(
                 margin: const EdgeInsets.fromLTRB(4, 4, 4, 4),
                 child: CustomIconButton(
-                    icon: ImageConstants.kDownArrow, onTap: () {})),
+                    icon: ImageConstants.kDownArrow,
+                    onTap: () => Navigator.of(context).pop())),
             centerTitle: true,
             title: const Text(
               'PEUGEOT-LR01',

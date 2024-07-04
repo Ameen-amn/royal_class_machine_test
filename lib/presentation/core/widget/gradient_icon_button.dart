@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 
-
 class CustomIconButton extends StatelessWidget {
   final String icon;
   final VoidCallback onTap;
@@ -15,6 +14,8 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       onTap: onTap,
       child: Container(
           height: 44,
