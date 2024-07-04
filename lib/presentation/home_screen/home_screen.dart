@@ -4,6 +4,7 @@ import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 import 'package:royal_class/presentation/core/widget/gradient_icon_button.dart';
+import 'package:royal_class/presentation/description_page/description_screen.dart';
 import 'package:royal_class/presentation/description_page/widget/detail_bottom_bar.dart';
 import 'package:royal_class/presentation/home_screen/widget/background_shape.dart';
 import 'package:royal_class/presentation/home_screen/widget/bottom_nav_bar.dart';
@@ -38,7 +39,11 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(color: ColorConstants.kWhite),
         ),
         actions: [
-          CustomIconButton(icon: ImageConstants.kSearchIcon, onTap: () {})
+          Padding(
+            padding: const EdgeInsets.only(right: 20),
+            child: CustomIconButton(
+                icon: ImageConstants.kSearchIcon, onTap: () {}),
+          )
         ],
       ),
       backgroundColor: ColorConstants.kBackgroundColor,
@@ -65,10 +70,19 @@ class _HomeScreenState extends State<HomeScreen> {
                                   crossAxisCount: 2),
                           itemCount: 5,
                           itemBuilder: (context, index) {
-                            return ItemCard(
-                              product: state.product?[index],
-                              onTap: () => Navigator.of(context)
-                                  .pushNamed(DetailBottomBar.detailScreen),
+                            return Transform.translate(
+                              offset: Offset(0, index % 2 != 0 ? -30 : 0),
+                              child: ItemCard(
+                                product: state.productList?[index],
+                                onTap: () {
+                                  BlocProvider.of<ProductBloc>(context).add(
+                                      ProductEvent.fetchProductDetail(
+                                          id: state.productList?[index].id ??
+                                              0));
+                                  Navigator.of(context)
+                                      .pushNamed(DetailScreen.detailScreen);
+                                },
+                              ),
                             );
                           });
                     },

@@ -10,7 +10,7 @@ class IProductRepo implements ProductRepository {
   IProductRepo({required this.prodcutRemoteDataSoruce});
   @override
   Future<ProductEntity> getProductDetail(String id) async {
-    return await prodcutRemoteDataSoruce.getProductDetail('15');
+    return await prodcutRemoteDataSoruce.getProductDetail(id);
   }
 
   @override

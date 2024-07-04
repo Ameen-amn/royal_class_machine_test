@@ -20,21 +20,21 @@ mixin _$ProductEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchProducts,
-    required TResult Function() fetchProductDetail,
+    required TResult Function(int id) fetchProductDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
-    TResult? Function()? fetchProductDetail,
+    TResult? Function(int id)? fetchProductDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchProducts,
-    TResult Function()? fetchProductDetail,
+    TResult Function(int id)? fetchProductDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -120,7 +120,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchProducts,
-    required TResult Function() fetchProductDetail,
+    required TResult Function(int id) fetchProductDetail,
   }) {
     return initial();
   }
@@ -130,7 +130,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
-    TResult? Function()? fetchProductDetail,
+    TResult? Function(int id)? fetchProductDetail,
   }) {
     return initial?.call();
   }
@@ -140,7 +140,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchProducts,
-    TResult Function()? fetchProductDetail,
+    TResult Function(int id)? fetchProductDetail,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -228,7 +228,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchProducts,
-    required TResult Function() fetchProductDetail,
+    required TResult Function(int id) fetchProductDetail,
   }) {
     return fetchProducts();
   }
@@ -238,7 +238,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
-    TResult? Function()? fetchProductDetail,
+    TResult? Function(int id)? fetchProductDetail,
   }) {
     return fetchProducts?.call();
   }
@@ -248,7 +248,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchProducts,
-    TResult Function()? fetchProductDetail,
+    TResult Function(int id)? fetchProductDetail,
     required TResult orElse(),
   }) {
     if (fetchProducts != null) {
@@ -301,6 +301,8 @@ abstract class _$$FetchProdutDetailImplCopyWith<$Res> {
   factory _$$FetchProdutDetailImplCopyWith(_$FetchProdutDetailImpl value,
           $Res Function(_$FetchProdutDetailImpl) then) =
       __$$FetchProdutDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
 }
 
 /// @nodoc
@@ -310,35 +312,60 @@ class __$$FetchProdutDetailImplCopyWithImpl<$Res>
   __$$FetchProdutDetailImplCopyWithImpl(_$FetchProdutDetailImpl _value,
       $Res Function(_$FetchProdutDetailImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$FetchProdutDetailImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$FetchProdutDetailImpl implements _FetchProdutDetail {
-  const _$FetchProdutDetailImpl();
+  const _$FetchProdutDetailImpl({required this.id});
+
+  @override
+  final int id;
 
   @override
   String toString() {
-    return 'ProductEvent.fetchProductDetail()';
+    return 'ProductEvent.fetchProductDetail(id: $id)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FetchProdutDetailImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$FetchProdutDetailImpl &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchProdutDetailImplCopyWith<_$FetchProdutDetailImpl> get copyWith =>
+      __$$FetchProdutDetailImplCopyWithImpl<_$FetchProdutDetailImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() fetchProducts,
-    required TResult Function() fetchProductDetail,
+    required TResult Function(int id) fetchProductDetail,
   }) {
-    return fetchProductDetail();
+    return fetchProductDetail(id);
   }
 
   @override
@@ -346,9 +373,9 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? fetchProducts,
-    TResult? Function()? fetchProductDetail,
+    TResult? Function(int id)? fetchProductDetail,
   }) {
-    return fetchProductDetail?.call();
+    return fetchProductDetail?.call(id);
   }
 
   @override
@@ -356,11 +383,11 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? fetchProducts,
-    TResult Function()? fetchProductDetail,
+    TResult Function(int id)? fetchProductDetail,
     required TResult orElse(),
   }) {
     if (fetchProductDetail != null) {
-      return fetchProductDetail();
+      return fetchProductDetail(id);
     }
     return orElse();
   }
@@ -401,14 +428,21 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
 }
 
 abstract class _FetchProdutDetail implements ProductEvent {
-  const factory _FetchProdutDetail() = _$FetchProdutDetailImpl;
+  const factory _FetchProdutDetail({required final int id}) =
+      _$FetchProdutDetailImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$FetchProdutDetailImplCopyWith<_$FetchProdutDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$ProductState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isLoaded => throw _privateConstructorUsedError;
-  List<ProductEntity>? get product => throw _privateConstructorUsedError;
+  List<ProductEntity>? get productList => throw _privateConstructorUsedError;
+  ProductEntity? get selectedProduct => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductStateCopyWith<ProductState> get copyWith =>
@@ -421,7 +455,11 @@ abstract class $ProductStateCopyWith<$Res> {
           ProductState value, $Res Function(ProductState) then) =
       _$ProductStateCopyWithImpl<$Res, ProductState>;
   @useResult
-  $Res call({bool isLoading, bool isLoaded, List<ProductEntity>? product});
+  $Res call(
+      {bool isLoading,
+      bool isLoaded,
+      List<ProductEntity>? productList,
+      ProductEntity? selectedProduct});
 }
 
 /// @nodoc
@@ -439,7 +477,8 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
   $Res call({
     Object? isLoading = null,
     Object? isLoaded = null,
-    Object? product = freezed,
+    Object? productList = freezed,
+    Object? selectedProduct = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -450,10 +489,14 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
           ? _value.isLoaded
           : isLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      product: freezed == product
-          ? _value.product
-          : product // ignore: cast_nullable_to_non_nullable
+      productList: freezed == productList
+          ? _value.productList
+          : productList // ignore: cast_nullable_to_non_nullable
               as List<ProductEntity>?,
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
+              as ProductEntity?,
     ) as $Val);
   }
 }
@@ -466,7 +509,11 @@ abstract class _$$ProductStateImplCopyWith<$Res>
       __$$ProductStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, bool isLoaded, List<ProductEntity>? product});
+  $Res call(
+      {bool isLoading,
+      bool isLoaded,
+      List<ProductEntity>? productList,
+      ProductEntity? selectedProduct});
 }
 
 /// @nodoc
@@ -482,7 +529,8 @@ class __$$ProductStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? isLoaded = null,
-    Object? product = freezed,
+    Object? productList = freezed,
+    Object? selectedProduct = freezed,
   }) {
     return _then(_$ProductStateImpl(
       isLoading: null == isLoading
@@ -493,10 +541,14 @@ class __$$ProductStateImplCopyWithImpl<$Res>
           ? _value.isLoaded
           : isLoaded // ignore: cast_nullable_to_non_nullable
               as bool,
-      product: freezed == product
-          ? _value._product
-          : product // ignore: cast_nullable_to_non_nullable
+      productList: freezed == productList
+          ? _value._productList
+          : productList // ignore: cast_nullable_to_non_nullable
               as List<ProductEntity>?,
+      selectedProduct: freezed == selectedProduct
+          ? _value.selectedProduct
+          : selectedProduct // ignore: cast_nullable_to_non_nullable
+              as ProductEntity?,
     ));
   }
 }
@@ -507,8 +559,9 @@ class _$ProductStateImpl implements _ProductState {
   const _$ProductStateImpl(
       {this.isLoading = false,
       this.isLoaded = false,
-      final List<ProductEntity>? product})
-      : _product = product;
+      final List<ProductEntity>? productList,
+      this.selectedProduct})
+      : _productList = productList;
 
   @override
   @JsonKey()
@@ -516,19 +569,22 @@ class _$ProductStateImpl implements _ProductState {
   @override
   @JsonKey()
   final bool isLoaded;
-  final List<ProductEntity>? _product;
+  final List<ProductEntity>? _productList;
   @override
-  List<ProductEntity>? get product {
-    final value = _product;
+  List<ProductEntity>? get productList {
+    final value = _productList;
     if (value == null) return null;
-    if (_product is EqualUnmodifiableListView) return _product;
+    if (_productList is EqualUnmodifiableListView) return _productList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
+  final ProductEntity? selectedProduct;
+
+  @override
   String toString() {
-    return 'ProductState(isLoading: $isLoading, isLoaded: $isLoaded, product: $product)';
+    return 'ProductState(isLoading: $isLoading, isLoaded: $isLoaded, productList: $productList, selectedProduct: $selectedProduct)';
   }
 
   @override
@@ -540,12 +596,15 @@ class _$ProductStateImpl implements _ProductState {
                 other.isLoading == isLoading) &&
             (identical(other.isLoaded, isLoaded) ||
                 other.isLoaded == isLoaded) &&
-            const DeepCollectionEquality().equals(other._product, _product));
+            const DeepCollectionEquality()
+                .equals(other._productList, _productList) &&
+            (identical(other.selectedProduct, selectedProduct) ||
+                other.selectedProduct == selectedProduct));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, isLoading, isLoaded,
-      const DeepCollectionEquality().hash(_product));
+      const DeepCollectionEquality().hash(_productList), selectedProduct);
 
   @JsonKey(ignore: true)
   @override
@@ -558,14 +617,17 @@ abstract class _ProductState implements ProductState {
   const factory _ProductState(
       {final bool isLoading,
       final bool isLoaded,
-      final List<ProductEntity>? product}) = _$ProductStateImpl;
+      final List<ProductEntity>? productList,
+      final ProductEntity? selectedProduct}) = _$ProductStateImpl;
 
   @override
   bool get isLoading;
   @override
   bool get isLoaded;
   @override
-  List<ProductEntity>? get product;
+  List<ProductEntity>? get productList;
+  @override
+  ProductEntity? get selectedProduct;
   @override
   @JsonKey(ignore: true)
   _$$ProductStateImplCopyWith<_$ProductStateImpl> get copyWith =>

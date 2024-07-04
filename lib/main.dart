@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (ctx) => const HomeScreen(),
-          DetailBottomBar.detailScreen: (_) => const DetailScreen()
+          DetailScreen.detailScreen: (_) => const DetailScreen()
         },
       ),
     );

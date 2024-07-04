@@ -17,7 +17,17 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       final List<ProductEntity> productList =
           await produtUsecase.getAllProduct();
       emit(state.copyWith(
-          isLoaded: true, isLoading: false, product: productList));
+          isLoaded: true, isLoading: false, productList: productList));
     });
+
+    on<_FetchProdutDetail>(
+      (event, emit) async {
+        emit(state.copyWith(isLoading: true));
+        final productDetail =
+            await produtUsecase.getProductDetail(id: event.id);
+        emit(state.copyWith(isLoading: false, selectedProduct: productDetail));
+    
+      },
+    );
   }
 }

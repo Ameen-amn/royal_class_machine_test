@@ -3,7 +3,9 @@ import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/description_page/widget/switch_button.dart';
 
 class DetailWidget extends StatelessWidget {
-  const DetailWidget({super.key});
+  final String title;
+  final String description;
+  const DetailWidget({super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -28,15 +30,15 @@ class DetailWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 30),
-          const Text(
-            'Title',
+           Text(
+            title,
             style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.w700,
                 color: ColorConstants.kWhite),
           ),
           Text(
-            'description',
+           description,
             style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w400,

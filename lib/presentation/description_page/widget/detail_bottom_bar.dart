@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 
 class DetailBottomBar extends StatelessWidget {
-  static const String detailScreen = '/DetailScreen';
-  const DetailBottomBar({super.key});
+  final int prince;
+  const DetailBottomBar({super.key, required this.prince});
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class DetailBottomBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Text(
-                '\$ 1855',
+               Text(
+                '\$ $prince',
                 style: TextStyle(
                     color: ColorConstants.kSkyBlue,
                     fontWeight: FontWeight.w400),
