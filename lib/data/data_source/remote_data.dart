@@ -26,13 +26,11 @@ class ProductRemoteDataSourceImpl implements ProdcutRemoteDataSoruce {
   @override
   Future<List<ProductModel>> getProducts(int page) async {
     final response = await http.get(Uri.parse(productApi));
-    print('${response.statusCode.toString()}');
     if (response.statusCode == 200) {
       List jsonResponse = json.decode(response.body);
       final List<ProductModel> productList = jsonResponse
           .map((product) => ProductModel.fromJson(product))
           .toList();
-      print(productList);
       return productList;
     } else {
       throw Exception('Failed to Load products');

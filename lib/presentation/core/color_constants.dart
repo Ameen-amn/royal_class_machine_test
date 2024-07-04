@@ -30,9 +30,13 @@ class ColorConstants {
     const Color(0xff34c8e8).withOpacity(0.6),
     const Color(0xff4e4af2).withOpacity(0.6)
   ], begin: Alignment.topCenter, end: Alignment.bottomRight);
+  static const LinearGradient kIconGradientFullOpacity = LinearGradient(
+      colors: [Color(0xff34c8e8), Color(0xff4e4af2)],
+      begin: Alignment.topCenter,
+      end: Alignment.bottomRight);
   static final LinearGradient kBottomNavBar = LinearGradient(colors: [
-    const Color(0xff363E51).withOpacity(0.4),
-    const Color(0xff181C24).withOpacity(0.4)
+    const Color(0xff363E51),
+    const Color(0xff181C24).withOpacity(0.8),
   ], begin: Alignment.topCenter, end: Alignment.bottomRight);
   static final LinearGradient kBorderGradient = LinearGradient(
     colors: [

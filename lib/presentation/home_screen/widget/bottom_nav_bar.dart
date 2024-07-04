@@ -4,7 +4,14 @@ import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/image_constants.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
-  const CustomBottomNavBar({super.key});
+  CustomBottomNavBar({super.key});
+
+  final List<String> _bottomNavBar = [
+    ImageConstants.kMap,
+    ImageConstants.kCart,
+    ImageConstants.kProfile,
+    ImageConstants.kDoc,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -12,23 +19,29 @@ class CustomBottomNavBar extends StatelessWidget {
       width: double.infinity,
       height: 103,
       child: CustomPaint(
-        size: const Size(double.infinity, 103), 
+        size: const Size(double.infinity, 103),
         painter: DiagonalShapePainter(),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: List.generate(
             5,
-            (index) => CustomPaint(
-              size: const Size(60, 60), 
-              painter: DiagonalShapePainter(),
-              child: Container(
-                  decoration:
-                      BoxDecoration(gradient: ColorConstants.kIconGradient),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 18, vertical: 25),
-                  height: 60,
-                  width: 60,
-                  child: SvgPicture.asset(ImageConstants.kHeart)),
-            ),
+            (index) => index == 0
+                ? Transform.translate(
+                    offset: const Offset(0, -15),
+                    child: CustomPaint(
+                      size: const Size(60, 60),
+                      painter: NavBarSelectedItem(),
+                      child: Container(
+                          // decoration: BoxDecoration(
+                          //     gradient: ColorConstants.kIconGradient),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 16),
+                          height: 60,
+                          width: 60,
+                          child: SvgPicture.asset(ImageConstants.kbiCycle)),
+                    ),
+                  )
+                : SvgPicture.asset(_bottomNavBar[index - 1]),
           ),
         ),
       ),
@@ -67,7 +80,7 @@ class DiagonalShapePainter extends CustomPainter {
     path.lineTo(0, size.height);
     path.close();
     canvas.drawPath(path, paint);
-   
+
     canvas.drawPath(path, borderPaint);
   }
 
@@ -77,56 +90,62 @@ class DiagonalShapePainter extends CustomPainter {
   }
 }
 
-class BottomNavShape extends CustomPainter {
+class NavBarSelectedItem extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint = Paint()
-      ..shader = ColorConstants.kIconGradient
+      ..shader = ColorConstants.kIconGradientFullOpacity
           .createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       // ..color = Colors.blue
       ..style = PaintingStyle.fill;
     final RRect rrect = RRect.fromRectAndCorners(
       Rect.fromLTWH(0, 0, size.width, size.height),
-      topLeft: const Radius.circular(50),
-      topRight: const Radius.circular(50),
-      bottomRight: const Radius.circular(50),
-      bottomLeft: const Radius.circular(50),
+      topLeft: const Radius.circular(12),
+      topRight: const Radius.circular(12),
+      bottomRight: const Radius.circular(12),
+      bottomLeft: const Radius.circular(12),
     );
-    const sideHeigtPerctange = 0.9;
-    const sideHeightTopPercentage = 0.1;
+    const sideHeigtPerctange = 0.8;
+    const sideHeightTopPercentage = 0.2;
     canvas.clipRRect(rrect);
-   
+    // Define the border
+
+    Paint borderPaint = Paint()
+      ..shader = ColorConstants.kBorderGradient
+          .createShader(Rect.fromLTWH(0, 0, size.width, size.height))
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 4;
+
+    // Define the custom path within the rounded rectangle
     Path path = Path();
-    path.moveTo(
-        0,
-        size.height *
-            sideHeightTopPercentage); 
+    path.moveTo(0, size.height * sideHeightTopPercentage);
     path.lineTo(
-        size.width - rrect.trRadiusX, 0);
+        size.width - rrect.trRadiusX, 0); // Top-right corner before radius
     path.quadraticBezierTo(
-        size.width, 0, size.width, rrect.trRadiusY);
+        size.width, 0, size.width, rrect.trRadiusY); // Top-right curve
     path.lineTo(size.width,
-        size.height * sideHeigtPerctange - rrect.brRadiusY);
+        size.height * sideHeigtPerctange - rrect.brRadiusY); // Right side
     path.quadraticBezierTo(
         size.width,
         size.height * sideHeigtPerctange,
         size.width - rrect.brRadiusX,
-        size.height * sideHeigtPerctange); 
-    path.lineTo(rrect.blRadiusX, size.height);
+        size.height * sideHeigtPerctange); // Bottom-right curve
+    path.lineTo(rrect.blRadiusX, size.height); // Bottom-left side
     path.quadraticBezierTo(
-        0, size.height, 0, size.height - rrect.blRadiusY);
+        0, size.height, 0, size.height - rrect.blRadiusY); // Bottom-left curve
     path.lineTo(0,
-        size.height * sideHeightTopPercentage + rrect.tlRadiusY);
+        size.height * sideHeightTopPercentage + rrect.tlRadiusY); // Left side
     path.quadraticBezierTo(
         0,
         size.height * sideHeightTopPercentage,
         rrect.tlRadiusX,
-        size.height * sideHeightTopPercentage - 5);
+        size.height * sideHeightTopPercentage); // Top-left curve
     path.close();
 
-  
+    // Draw the path
     canvas.drawPath(path, paint);
-    
+    // Draw the border
+    canvas.drawPath(path, borderPaint);
   }
 
   @override

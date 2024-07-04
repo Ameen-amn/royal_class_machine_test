@@ -11,7 +11,6 @@ class ItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(product?.image[0]);
     return InkWell(
       onTap: onTap,
       child: CustomPaint(
@@ -36,7 +35,12 @@ class ItemCard extends StatelessWidget {
                       ImageConstants.kHeart,
                     ),
                   )),
-              Image.network(product?.image[0] ?? ''),
+              product?.image[0].contains('jpeg')
+                  ? Image.network(product?.image[0] ?? '')
+                  : const SizedBox(
+                      height: 80,
+                      child: Text('Image not availabe'),
+                    ),
               Text(
                 product?.category ?? '',
                 style: TextStyle(

@@ -77,9 +77,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          Align(alignment: Alignment.bottomCenter, child: CustomBottomNavBar()),
         ],
       ),
-      bottomNavigationBar: const CustomBottomNavBar(),
     );
   }
 }
