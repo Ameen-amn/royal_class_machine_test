@@ -40,7 +40,6 @@ class DiagonalShapePainter extends CustomPainter {
       bottomLeft: const Radius.circular(20),
     );
 
-    const sideHeigtPerctange = 0.8;
 
     canvas.clipRRect(rrect);
     Path path = Path();
