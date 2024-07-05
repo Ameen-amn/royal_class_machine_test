@@ -24,6 +24,7 @@ class DetailScreen extends StatelessWidget {
               color: ColorConstants.kBackgroundColor,
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: AppBar(
+                surfaceTintColor: Colors.transparent,
                 leading: Container(
                     margin: const EdgeInsets.fromLTRB(4, 4, 4, 4),
                     child: CustomIconButton(
