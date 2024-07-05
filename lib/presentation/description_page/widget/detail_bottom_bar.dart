@@ -28,31 +28,36 @@ class DetailBottomBar extends StatelessWidget {
                     color: ColorConstants.kSkyBlue,
                     fontWeight: FontWeight.w400),
               ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    gradient: ColorConstants.kIconGradient),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        shadowColor: Colors.transparent,
-                        surfaceTintColor: Colors.transparent),
-                    onPressed: () {
-                      BlocProvider.of<ProductBloc>(context)
-                          .add(const ProductEvent.addToCart());
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                        
-                          content: Text("Added to Cart")));
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Text(
-                        'Add to Cart',
-                        style: TextStyle(
-                            color: ColorConstants.kWhite,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    )),
+              BlocBuilder<ProductBloc, ProductState>(
+                builder: (context, state) {
+                  return DecoratedBox(
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        gradient: ColorConstants.kIconGradient),
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                            shadowColor: Colors.transparent,
+                            surfaceTintColor: Colors.transparent),
+                        onPressed: () {
+                          // BlocProvider.of<ProductBloc>(context).add(
+                          //      ProductEvent.addToCart(
+                          //         prod: state.selectedProduct));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("Added to Cart")));
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            'Add to Cart',
+                            style: TextStyle(
+                                color: ColorConstants.kWhite,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        )),
+                  );
+                },
               )
             ],
           ),

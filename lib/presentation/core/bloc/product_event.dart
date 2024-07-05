@@ -7,5 +7,5 @@ class ProductEvent with _$ProductEvent {
   const factory ProductEvent.fetchProductDetail({required int id}) =
       _FetchProdutDetail;
   const factory ProductEvent.lazyLoadProducts() = _LazyProductLoading;
-  const factory ProductEvent.addToCart() = _AddtoCart;
+  const factory ProductEvent.addToCart({required ProductEntity? prod}) = _AddtoCart;
 }

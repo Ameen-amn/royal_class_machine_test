@@ -22,7 +22,7 @@ mixin _$ProductEvent {
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
     required TResult Function() lazyLoadProducts,
-    required TResult Function() addToCart,
+    required TResult Function(ProductEntity? prod) addToCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$ProductEvent {
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
     TResult? Function()? lazyLoadProducts,
-    TResult? Function()? addToCart,
+    TResult? Function(ProductEntity? prod)? addToCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$ProductEvent {
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
     TResult Function()? lazyLoadProducts,
-    TResult Function()? addToCart,
+    TResult Function(ProductEntity? prod)? addToCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,7 +134,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
     required TResult Function() lazyLoadProducts,
-    required TResult Function() addToCart,
+    required TResult Function(ProductEntity? prod) addToCart,
   }) {
     return initial();
   }
@@ -146,7 +146,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
     TResult? Function()? lazyLoadProducts,
-    TResult? Function()? addToCart,
+    TResult? Function(ProductEntity? prod)? addToCart,
   }) {
     return initial?.call();
   }
@@ -158,7 +158,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
     TResult Function()? lazyLoadProducts,
-    TResult Function()? addToCart,
+    TResult Function(ProductEntity? prod)? addToCart,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -254,7 +254,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
     required TResult Function() lazyLoadProducts,
-    required TResult Function() addToCart,
+    required TResult Function(ProductEntity? prod) addToCart,
   }) {
     return fetchProducts();
   }
@@ -266,7 +266,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
     TResult? Function()? lazyLoadProducts,
-    TResult? Function()? addToCart,
+    TResult? Function(ProductEntity? prod)? addToCart,
   }) {
     return fetchProducts?.call();
   }
@@ -278,7 +278,7 @@ class _$FetchProdutsImpl implements _FetchProduts {
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
     TResult Function()? lazyLoadProducts,
-    TResult Function()? addToCart,
+    TResult Function(ProductEntity? prod)? addToCart,
     required TResult orElse(),
   }) {
     if (fetchProducts != null) {
@@ -401,7 +401,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
     required TResult Function() lazyLoadProducts,
-    required TResult Function() addToCart,
+    required TResult Function(ProductEntity? prod) addToCart,
   }) {
     return fetchProductDetail(id);
   }
@@ -413,7 +413,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
     TResult? Function()? lazyLoadProducts,
-    TResult? Function()? addToCart,
+    TResult? Function(ProductEntity? prod)? addToCart,
   }) {
     return fetchProductDetail?.call(id);
   }
@@ -425,7 +425,7 @@ class _$FetchProdutDetailImpl implements _FetchProdutDetail {
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
     TResult Function()? lazyLoadProducts,
-    TResult Function()? addToCart,
+    TResult Function(ProductEntity? prod)? addToCart,
     required TResult orElse(),
   }) {
     if (fetchProductDetail != null) {
@@ -527,7 +527,7 @@ class _$LazyProductLoadingImpl implements _LazyProductLoading {
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
     required TResult Function() lazyLoadProducts,
-    required TResult Function() addToCart,
+    required TResult Function(ProductEntity? prod) addToCart,
   }) {
     return lazyLoadProducts();
   }
@@ -539,7 +539,7 @@ class _$LazyProductLoadingImpl implements _LazyProductLoading {
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
     TResult? Function()? lazyLoadProducts,
-    TResult? Function()? addToCart,
+    TResult? Function(ProductEntity? prod)? addToCart,
   }) {
     return lazyLoadProducts?.call();
   }
@@ -551,7 +551,7 @@ class _$LazyProductLoadingImpl implements _LazyProductLoading {
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
     TResult Function()? lazyLoadProducts,
-    TResult Function()? addToCart,
+    TResult Function(ProductEntity? prod)? addToCart,
     required TResult orElse(),
   }) {
     if (lazyLoadProducts != null) {
@@ -610,6 +610,8 @@ abstract class _$$AddtoCartImplCopyWith<$Res> {
   factory _$$AddtoCartImplCopyWith(
           _$AddtoCartImpl value, $Res Function(_$AddtoCartImpl) then) =
       __$$AddtoCartImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ProductEntity? prod});
 }
 
 /// @nodoc
@@ -619,26 +621,50 @@ class __$$AddtoCartImplCopyWithImpl<$Res>
   __$$AddtoCartImplCopyWithImpl(
       _$AddtoCartImpl _value, $Res Function(_$AddtoCartImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? prod = freezed,
+  }) {
+    return _then(_$AddtoCartImpl(
+      prod: freezed == prod
+          ? _value.prod
+          : prod // ignore: cast_nullable_to_non_nullable
+              as ProductEntity?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$AddtoCartImpl implements _AddtoCart {
-  const _$AddtoCartImpl();
+  const _$AddtoCartImpl({required this.prod});
+
+  @override
+  final ProductEntity? prod;
 
   @override
   String toString() {
-    return 'ProductEvent.addToCart()';
+    return 'ProductEvent.addToCart(prod: $prod)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$AddtoCartImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AddtoCartImpl &&
+            (identical(other.prod, prod) || other.prod == prod));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, prod);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddtoCartImplCopyWith<_$AddtoCartImpl> get copyWith =>
+      __$$AddtoCartImplCopyWithImpl<_$AddtoCartImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -647,9 +673,9 @@ class _$AddtoCartImpl implements _AddtoCart {
     required TResult Function() fetchProducts,
     required TResult Function(int id) fetchProductDetail,
     required TResult Function() lazyLoadProducts,
-    required TResult Function() addToCart,
+    required TResult Function(ProductEntity? prod) addToCart,
   }) {
-    return addToCart();
+    return addToCart(prod);
   }
 
   @override
@@ -659,9 +685,9 @@ class _$AddtoCartImpl implements _AddtoCart {
     TResult? Function()? fetchProducts,
     TResult? Function(int id)? fetchProductDetail,
     TResult? Function()? lazyLoadProducts,
-    TResult? Function()? addToCart,
+    TResult? Function(ProductEntity? prod)? addToCart,
   }) {
-    return addToCart?.call();
+    return addToCart?.call(prod);
   }
 
   @override
@@ -671,11 +697,11 @@ class _$AddtoCartImpl implements _AddtoCart {
     TResult Function()? fetchProducts,
     TResult Function(int id)? fetchProductDetail,
     TResult Function()? lazyLoadProducts,
-    TResult Function()? addToCart,
+    TResult Function(ProductEntity? prod)? addToCart,
     required TResult orElse(),
   }) {
     if (addToCart != null) {
-      return addToCart();
+      return addToCart(prod);
     }
     return orElse();
   }
@@ -722,7 +748,13 @@ class _$AddtoCartImpl implements _AddtoCart {
 }
 
 abstract class _AddtoCart implements ProductEvent {
-  const factory _AddtoCart() = _$AddtoCartImpl;
+  const factory _AddtoCart({required final ProductEntity? prod}) =
+      _$AddtoCartImpl;
+
+  ProductEntity? get prod;
+  @JsonKey(ignore: true)
+  _$$AddtoCartImplCopyWith<_$AddtoCartImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

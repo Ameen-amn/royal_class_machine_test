@@ -5,7 +5,8 @@ import 'package:royal_class/presentation/description_page/widget/switch_button.d
 class DetailWidget extends StatelessWidget {
   final String title;
   final String description;
-  const DetailWidget({super.key, required this.title, required this.description});
+  const DetailWidget(
+      {super.key, required this.title, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -17,34 +18,36 @@ class DetailWidget extends StatelessWidget {
           gradient: ColorConstants.kDetailGradient,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CustomSwitchButton(title: 'Description'),
-              ShadowedButton()
-            ],
-          ),
-          const SizedBox(height: 30),
-           Text(
-            title,
-            style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w700,
-                color: ColorConstants.kWhite),
-          ),
-          Text(
-           description,
-            style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w400,
-                color: ColorConstants.kDeactive),
-          )
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CustomSwitchButton(title: 'Description'),
+                ShadowedButton()
+              ],
+            ),
+            const SizedBox(height: 30),
+            Text(
+              title,
+              style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: ColorConstants.kWhite),
+            ),
+            Text(
+              description,
+              style: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  color: ColorConstants.kDeactive),
+            )
+          ],
+        ),
       ),
     );
   }

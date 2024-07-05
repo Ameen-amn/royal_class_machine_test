@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:royal_class/data/model/product_model.dart';
 import 'package:royal_class/domain/entity/product_entity.dart';
 import 'package:royal_class/domain/usecase/produt_usecase.dart';
 
@@ -26,7 +27,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             allProducts.take(currentPage * productsPerPage).toList();
 
         final hasReachedMax = (productsToDisplay.length) >= allProducts.length;
-        
+
         emit(state.copyWith(
             isLoaded: true,
             isLoading: false,
@@ -49,5 +50,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(state.copyWith(isLoading: false, selectedProduct: productDetail));
       },
     );
+    
   }
 }
