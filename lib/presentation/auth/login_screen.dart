@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:royal_class/presentation/auth/bloc/auth_bloc.dart';
+import 'package:royal_class/presentation/auth/singup_scren.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/widget/decorations.dart';
 import 'package:royal_class/presentation/core/widget/texttheme.dart';
 
 class LoginScreen extends StatelessWidget {
-   static const  String routeName='/LoginScreen';
+  static const String routeName = '/LoginScreen';
   const LoginScreen({super.key});
 
   @override
@@ -98,15 +99,17 @@ class LoginFormScreen extends StatelessWidget {
         //         style: TextStyle(color: ColorConstants.kbuttonTextColor),
         //       )),
         // ),
-        Padding(
-          padding: const EdgeInsets.only(top: 50, bottom: 45),
-          child: ElevatedButton(
-              child: const Text('Login'),
-              onPressed: () {
-                BlocProvider.of<AuthBloc>(context).add(AuthEvent.signInUser(
-                    email: emailController.text,
-                    password: passwordController.text));
-              }),
+        Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50, bottom: 45),
+            child: ElevatedButton(
+                child: const Text('Login'),
+                onPressed: () {
+                  BlocProvider.of<AuthBloc>(context).add(AuthEvent.signInUser(
+                      email: emailController.text,
+                      password: passwordController.text));
+                }),
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +121,7 @@ class LoginFormScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.black)),
             ])),
             TextButton(
-                onPressed: () => Navigator.of(context).pushNamed(''),
+                onPressed: () => Navigator.of(context).pushNamed(SignUpScreen.routeName),
                 child: const Text(
                   'SignUp Now',
                   style: TextStyle(color: ColorConstants.kIndigo),

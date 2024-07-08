@@ -20,21 +20,25 @@ mixin _$AuthEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String email, String password) signInUser,
-    required TResult Function(String email, String password) signUpUser,
+    required TResult Function(
+            String email, String password, String confirmPassowrd)
+        signUpUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String email, String password)? signInUser,
-    TResult? Function(String email, String password)? signUpUser,
+    TResult? Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String email, String password)? signInUser,
-    TResult Function(String email, String password)? signUpUser,
+    TResult Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,7 +123,9 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String email, String password) signInUser,
-    required TResult Function(String email, String password) signUpUser,
+    required TResult Function(
+            String email, String password, String confirmPassowrd)
+        signUpUser,
   }) {
     return initial();
   }
@@ -129,7 +135,8 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String email, String password)? signInUser,
-    TResult? Function(String email, String password)? signUpUser,
+    TResult? Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
   }) {
     return initial?.call();
   }
@@ -139,7 +146,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String email, String password)? signInUser,
-    TResult Function(String email, String password)? signUpUser,
+    TResult Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -262,7 +270,9 @@ class _$SingInImpl implements _SingIn {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String email, String password) signInUser,
-    required TResult Function(String email, String password) signUpUser,
+    required TResult Function(
+            String email, String password, String confirmPassowrd)
+        signUpUser,
   }) {
     return signInUser(email, password);
   }
@@ -272,7 +282,8 @@ class _$SingInImpl implements _SingIn {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String email, String password)? signInUser,
-    TResult? Function(String email, String password)? signUpUser,
+    TResult? Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
   }) {
     return signInUser?.call(email, password);
   }
@@ -282,7 +293,8 @@ class _$SingInImpl implements _SingIn {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String email, String password)? signInUser,
-    TResult Function(String email, String password)? signUpUser,
+    TResult Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
     required TResult orElse(),
   }) {
     if (signInUser != null) {
@@ -344,7 +356,7 @@ abstract class _$$SingUpImplCopyWith<$Res> {
           _$SingUpImpl value, $Res Function(_$SingUpImpl) then) =
       __$$SingUpImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String email, String password});
+  $Res call({String email, String password, String confirmPassowrd});
 }
 
 /// @nodoc
@@ -360,6 +372,7 @@ class __$$SingUpImplCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
+    Object? confirmPassowrd = null,
   }) {
     return _then(_$SingUpImpl(
       email: null == email
@@ -370,6 +383,10 @@ class __$$SingUpImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      confirmPassowrd: null == confirmPassowrd
+          ? _value.confirmPassowrd
+          : confirmPassowrd // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -377,16 +394,21 @@ class __$$SingUpImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SingUpImpl implements _SingUp {
-  const _$SingUpImpl({required this.email, required this.password});
+  const _$SingUpImpl(
+      {required this.email,
+      required this.password,
+      required this.confirmPassowrd});
 
   @override
   final String email;
   @override
   final String password;
+  @override
+  final String confirmPassowrd;
 
   @override
   String toString() {
-    return 'AuthEvent.signUpUser(email: $email, password: $password)';
+    return 'AuthEvent.signUpUser(email: $email, password: $password, confirmPassowrd: $confirmPassowrd)';
   }
 
   @override
@@ -396,11 +418,14 @@ class _$SingUpImpl implements _SingUp {
             other is _$SingUpImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.confirmPassowrd, confirmPassowrd) ||
+                other.confirmPassowrd == confirmPassowrd));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, email, password);
+  int get hashCode =>
+      Object.hash(runtimeType, email, password, confirmPassowrd);
 
   @JsonKey(ignore: true)
   @override
@@ -413,9 +438,11 @@ class _$SingUpImpl implements _SingUp {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function(String email, String password) signInUser,
-    required TResult Function(String email, String password) signUpUser,
+    required TResult Function(
+            String email, String password, String confirmPassowrd)
+        signUpUser,
   }) {
-    return signUpUser(email, password);
+    return signUpUser(email, password, confirmPassowrd);
   }
 
   @override
@@ -423,9 +450,10 @@ class _$SingUpImpl implements _SingUp {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function(String email, String password)? signInUser,
-    TResult? Function(String email, String password)? signUpUser,
+    TResult? Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
   }) {
-    return signUpUser?.call(email, password);
+    return signUpUser?.call(email, password, confirmPassowrd);
   }
 
   @override
@@ -433,11 +461,12 @@ class _$SingUpImpl implements _SingUp {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function(String email, String password)? signInUser,
-    TResult Function(String email, String password)? signUpUser,
+    TResult Function(String email, String password, String confirmPassowrd)?
+        signUpUser,
     required TResult orElse(),
   }) {
     if (signUpUser != null) {
-      return signUpUser(email, password);
+      return signUpUser(email, password, confirmPassowrd);
     }
     return orElse();
   }
@@ -480,10 +509,12 @@ class _$SingUpImpl implements _SingUp {
 abstract class _SingUp implements AuthEvent {
   const factory _SingUp(
       {required final String email,
-      required final String password}) = _$SingUpImpl;
+      required final String password,
+      required final String confirmPassowrd}) = _$SingUpImpl;
 
   String get email;
   String get password;
+  String get confirmPassowrd;
   @JsonKey(ignore: true)
   _$$SingUpImplCopyWith<_$SingUpImpl> get copyWith =>
       throw _privateConstructorUsedError;

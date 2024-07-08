@@ -8,6 +8,7 @@ import 'package:royal_class/firebase_options.dart';
 import 'package:royal_class/injectable.dart';
 import 'package:royal_class/presentation/auth/bloc/auth_bloc.dart';
 import 'package:royal_class/presentation/auth/login_screen.dart';
+import 'package:royal_class/presentation/auth/singup_scren.dart';
 import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/widget/texttheme.dart';
@@ -57,7 +58,8 @@ class MyApp extends StatelessWidget {
           // '/': (ctx) => const HomeScreen(),
           '/': (ctx) => const LoginScreen(),
           DetailScreen.detailScreen: (_) => const DetailScreen(),
-          LoginScreen.routeName: (_) => const LoginScreen()
+          LoginScreen.routeName: (_) => const LoginScreen(),
+          SignUpScreen.routeName: (_) =>  SignUpScreen(),
         },
       ),
     );
