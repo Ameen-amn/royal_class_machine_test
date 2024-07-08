@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:royal_class/data/model/hive_model.dart';
+import 'package:royal_class/firebase_options.dart';
 import 'package:royal_class/injectable.dart';
 import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
@@ -16,7 +17,7 @@ void main() async {
   await Hive.openBox('cacheBox');
   configureDependencies();
 
-  // await Firebase.initializeApp(options: FirebaseOptions.);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 

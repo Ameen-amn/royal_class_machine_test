@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "736969977478",
+    "project_id": "royal-class-ff839",
+    "storage_bucket": "royal-class-ff839.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:736969977478:android:53fabd16d91dc5e5e76b07",
+        "android_client_info": {
+          "package_name": "com.example.royal_class"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMB-Lz4oly7chdqtJjSMP0Jy3hxfzlBdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -120,7 +120,7 @@ class DiagonalShapePainter extends CustomPainter {
         0,
         size.height * sideHeightTopPercentage,
         rrect.tlRadiusX,
-        size.height * sideHeightTopPercentage - 5); // Top-left curve
+        size.height * sideHeightTopPercentage - 0); // Top-left curve
     path.close();
 
     // Draw the path
