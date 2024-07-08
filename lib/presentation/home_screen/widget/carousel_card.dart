@@ -16,40 +16,45 @@ class CarouselCard extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              // color: Colors.red,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 8, sigmaY: 8),
-              child: Column(
-                children: [
-                  CustomPaint(
-                    size: const Size(
-                        double.infinity, 240), // Adjust the size as needed
-                    painter: DiagonalShapePainter(),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 30, horizontal: 17),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                              height: 153,
-                              width: double.infinity,
-                              child: Image.asset(ImageConstants.kcycle)),
-                          Text(
-                            '30% OFF',
-                            style: TextStyle(
-                                fontSize: 28,
-                                color: ColorConstants.kDeactive,
-                                fontWeight: FontWeight.w700),
-                          )
-                        ],
+            child: Column(
+              children: [
+                ClipRRect(
+                  child: Stack(
+                    children: [
+                      BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                        child: CustomPaint(
+                          size: const Size(double.infinity,
+                              240), // Adjust the size as needed
+                          painter: DiagonalShapePainter(),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 30, horizontal: 17),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                    height: 153,
+                                    width: double.infinity,
+                                    child: Image.asset(ImageConstants.kcycle)),
+                                Text(
+                                  '30% OFF',
+                                  style: TextStyle(
+                                      fontSize: 28,
+                                      color: ColorConstants.kDeactive,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Positioned(top: 280, child: CategoryBar())

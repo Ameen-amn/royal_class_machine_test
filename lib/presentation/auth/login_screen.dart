@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
             child: BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
                 if (state.isLoggedIn) {
-                  Navigator.of(context).pushNamed(HomeScreen.routeName);
+                  Navigator.of(context).popAndPushNamed(HomeScreen.routeName);
                 }
                 if (state.onError) {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(

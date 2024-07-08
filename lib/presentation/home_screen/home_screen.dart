@@ -78,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (state.isLoading) {
                         return const Center(
                           child: CircularProgressIndicator(
-                              color: ColorConstants.kSkyBlue, strokeWidth: 5),
+                              color: ColorConstants.kSkyBlue, strokeWidth: 5)
                         );
                       }
                       if (state.isLoaded) {

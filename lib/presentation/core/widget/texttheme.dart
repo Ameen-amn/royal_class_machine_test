@@ -12,5 +12,5 @@ class TextthemeConstants {
       bodySmall:
           const TextStyle(color: ColorConstants.kHintColor, fontSize: 14),
       headlineLarge: const TextStyle(
-          color: ColorConstants.kWhite, fontWeight: FontWeight.bold));
+          color: ColorConstants.kWhite, fontWeight: FontWeight.bold,fontSize: 15));
 }
