@@ -14,15 +14,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required this.usecase}) : super(AuthState.inital()) {
     on<_SingUp>((event, emit) async {
       emit(state.copyWith(isLoading: true));
-
-      final authResponse = await usecase.signUpUser(
-          email: event.email, password: event.password);
-      authResponse.fold(
-        (l) => emit(
-            state.copyWith(onError: true, isLoading: false, isLoaded: true)),
-        (r) => emit(
-            state.copyWith(isLoaded: true, isLoading: false, isLoggedIn: true)),
-      );
+      if (event.confirmPassowrd == event.password) {
+        final authResponse = await usecase.signUpUser(
+            email: event.email, password: event.password);
+        authResponse.fold(
+          (l) => emit(
+              state.copyWith(onError: true, isLoading: false, isLoaded: true)),
+          (r) => emit(state.copyWith(
+              isLoaded: true,
+              isLoading: false,
+              isLoggedIn: true,
+              onError: false)),
+        );
+      }
     });
     on<_SingIn>((event, emit) async {
       emit(state.copyWith(isLoading: true));

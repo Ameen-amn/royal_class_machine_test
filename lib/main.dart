@@ -13,6 +13,7 @@ import 'package:royal_class/presentation/core/bloc/product_bloc.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/widget/texttheme.dart';
 import 'package:royal_class/presentation/description_page/description_screen.dart';
+import 'package:royal_class/presentation/home_screen/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,11 +56,11 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         routes: {
-          // '/': (ctx) => const HomeScreen(),
           '/': (ctx) => const LoginScreen(),
           DetailScreen.detailScreen: (_) => const DetailScreen(),
           LoginScreen.routeName: (_) => const LoginScreen(),
-          SignUpScreen.routeName: (_) =>  SignUpScreen(),
+          SignUpScreen.routeName: (_) => SignUpScreen(),
+          HomeScreen.routeName: (_) => const HomeScreen()
         },
       ),
     );

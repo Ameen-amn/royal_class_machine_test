@@ -68,7 +68,7 @@ class DetailScreen extends StatelessWidget {
             ],
           ),
           bottomNavigationBar: DetailBottomBar(
-            prince: state.selectedProduct?.price ?? 0,
+            prince: state.selectedProduct?.price ?? 0
           ),
         );
       },

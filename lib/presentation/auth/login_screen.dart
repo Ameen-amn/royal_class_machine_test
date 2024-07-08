@@ -5,6 +5,7 @@ import 'package:royal_class/presentation/auth/singup_scren.dart';
 import 'package:royal_class/presentation/core/color_constants.dart';
 import 'package:royal_class/presentation/core/widget/decorations.dart';
 import 'package:royal_class/presentation/core/widget/texttheme.dart';
+import 'package:royal_class/presentation/home_screen/home_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String routeName = '/LoginScreen';
@@ -20,14 +21,18 @@ class LoginScreen extends StatelessWidget {
             child: BlocConsumer<AuthBloc, AuthState>(
               listener: (context, state) {
                 if (state.isLoggedIn) {
-                  () => Navigator.of(context).pushNamed('');
+                  Navigator.of(context).pushNamed(HomeScreen.routeName);
+                }
+                if (state.onError) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Failed!! Try again')));
                 }
               },
               builder: (context, state) {
                 if (state.isLoading && !state.isLoaded) {
                   return const Center(
                       child: CircularProgressIndicator(
-                    color: ColorConstants.kBorderColor,
+                    color: ColorConstants.kSkyBlue,
                     strokeWidth: 5,
                   ));
                 }
@@ -82,10 +87,7 @@ class LoginFormScreen extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
-          child: Text(
-            'Password',
-            style: textTheme.displaySmall
-          ),
+          child: Text('Password', style: textTheme.displaySmall),
         ),
         SizedBox(
           height: 50,

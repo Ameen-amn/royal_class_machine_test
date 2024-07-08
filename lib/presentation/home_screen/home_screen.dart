@@ -11,6 +11,7 @@ import 'package:royal_class/presentation/home_screen/widget/carousel_card.dart';
 import 'package:royal_class/presentation/home_screen/widget/item_card.dart';
 
 class HomeScreen extends StatefulWidget {
+ static const  String routeName='HomeScreen';
   const HomeScreen({super.key});
 
   @override

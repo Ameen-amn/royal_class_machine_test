@@ -32,15 +32,15 @@ class ItemCard extends StatelessWidget {
                           Rect.fromLTWH(0, 0, bounds.width, bounds.height));
                     },
                     child: SvgPicture.asset(
-                      ImageConstants.kHeart,
+                      ImageConstants.kHeart
                     ),
                   )),
-              product?.image[0].contains('jpeg')
-                  ? Image.network(product?.image[0] ?? '')
-                  : const SizedBox(
+              product?.image[0].contains('[')
+                  ? const SizedBox(
                       height: 80,
                       child: Text('Image not availabe'),
-                    ),
+                    )
+                  : Image.network(product?.image[0] ?? ''),
               Text(
                 product?.category ?? '',
                 style: TextStyle(
