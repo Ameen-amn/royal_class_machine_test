@@ -84,7 +84,7 @@ class LoginFormScreen extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
           child: Text(
             'Password',
-            style: textTheme.displaySmall,
+            style: textTheme.displaySmall
           ),
         ),
         SizedBox(
@@ -98,7 +98,7 @@ class LoginFormScreen extends StatelessWidget {
         ),
         Center(
           child: Padding(
-            padding: const EdgeInsets.only(top: 50, bottom: 45),
+            padding: const EdgeInsets.only(top: 30, bottom: 25),
             child: ElevatedButton(
                 child: const Text('Login'),
                 onPressed: () {

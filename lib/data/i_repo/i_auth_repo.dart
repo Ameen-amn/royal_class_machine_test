@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:royal_class/data/data_source/remote/firebase_data.dart';
@@ -9,12 +10,12 @@ class AuthRepositoryImpl implements AuthRepository {
 
   AuthRepositoryImpl({required this.remoteDataSource});
   @override
-  Future<User> signInWithEmailAndPassword(String email, String password) async{
+  Future<Either<Exception, User>> signInWithEmailAndPassword(String email, String password) async{
    return await remoteDataSource.signInWithEmailAndPassword(email, password);
   }
 
   @override
-  Future<User> signUpWithEmailAndPassword(String email, String password) async{
+  Future<Either<Exception, User>> signUpWithEmailAndPassword(String email, String password) async{
     return await remoteDataSource.signUpWithEmailAndPassword(email, password);
   }
 }

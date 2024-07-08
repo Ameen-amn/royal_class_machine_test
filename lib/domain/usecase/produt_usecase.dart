@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:royal_class/domain/entity/product_entity.dart';
@@ -19,11 +20,11 @@ class Usecase {
     return await productRepository.getProductDetail(id.toString());
   }
 
-  Future<User> signInUser(
+  Future<Either<Exception, User>> signInUser(
       {required String email, required String password}) async {
     return await authRepository.signInWithEmailAndPassword(email, password);
   }
-  Future<User> signUpUser(
+  Future<Either<Exception, User>> signUpUser(
       {required String email, required String password}) async {
     return await authRepository.signUpWithEmailAndPassword(email, password);
   }
