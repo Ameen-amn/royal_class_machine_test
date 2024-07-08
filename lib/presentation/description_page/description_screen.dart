@@ -105,6 +105,11 @@ class _CustomCarouselSliderState extends State<CustomCarouselSlider> {
             child: CarouselSlider.builder(
                 itemCount: widget.imageList.length,
                 itemBuilder: (context, index, realIndex) {
+                  if (widget.imageList[index].contains('[')) {
+                    return const Center(
+                      child: Text('Image Currently\n Not available'),
+                    );
+                  }
                   return Image.network(widget.imageList[index],
                       fit: BoxFit.cover);
                 },

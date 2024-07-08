@@ -20,10 +20,12 @@ class DetailWidget extends StatelessWidget {
               topLeft: Radius.circular(30), topRight: Radius.circular(30))),
       child: SingleChildScrollView(
         child: Column(
+          
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const Row(
+              
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -31,6 +33,7 @@ class DetailWidget extends StatelessWidget {
                 ShadowedButton()
               ],
             ),
+
             const SizedBox(height: 30),
             Text(
               title,

@@ -126,6 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return const SizedBox();
                     },
                   ),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),
