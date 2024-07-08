@@ -46,7 +46,15 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(state.copyWith(isLoading: true));
         final productDetail =
             await produtUsecase.getProductDetail(id: event.id);
-        emit(state.copyWith(isLoading: false, selectedProduct: productDetail));
+        productDetail.fold(
+          (error) => emit(
+              state.copyWith(isLoaded: true, isLoading: false, error: true)),
+          (productEntity) => emit(state.copyWith(
+              isLoaded: true,
+              isLoading: false,
+              error: false,
+              selectedProduct: productEntity)),
+        );
       },
     );
   }

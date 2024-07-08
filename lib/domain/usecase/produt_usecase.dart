@@ -16,7 +16,7 @@ class Usecase {
     return productRepository.getProducts();
   }
 
-  Future<ProductEntity> getProductDetail({required int id}) async {
+  Future<Either<Exception, ProductEntity>> getProductDetail({required int id}) async {
     return await productRepository.getProductDetail(id.toString());
   }
 

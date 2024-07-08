@@ -30,11 +30,14 @@ class LoginScreen extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state.isLoading && !state.isLoaded) {
-                  return const Center(
-                      child: CircularProgressIndicator(
-                    color: ColorConstants.kSkyBlue,
-                    strokeWidth: 5,
-                  ));
+                  return SizedBox(
+                    height: MediaQuery.sizeOf(context).height,
+                    child: const Center(
+                        child: CircularProgressIndicator(
+                      color: ColorConstants.kSkyBlue,
+                      strokeWidth: 5,
+                    )),
+                  );
                 }
                 if (!state.isLoggedIn) {
                   return LoginFormScreen();
@@ -101,13 +104,22 @@ class LoginFormScreen extends StatelessWidget {
         Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 30, bottom: 25),
-            child: ElevatedButton(
-                child: const Text('Login'),
-                onPressed: () {
-                  BlocProvider.of<AuthBloc>(context).add(AuthEvent.signInUser(
-                      email: emailController.text,
-                      password: passwordController.text));
-                }),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  gradient: ColorConstants.kIconGradient),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      shadowColor: Colors.transparent,
+                      surfaceTintColor: Colors.transparent),
+                  child: Text('Login', style: textTheme.headlineLarge),
+                  onPressed: () {
+                    BlocProvider.of<AuthBloc>(context).add(AuthEvent.signInUser(
+                        email: emailController.text,
+                        password: passwordController.text));
+                  }),
+            ),
           ),
         ),
         Row(
@@ -124,7 +136,7 @@ class LoginFormScreen extends StatelessWidget {
                     Navigator.of(context).pushNamed(SignUpScreen.routeName),
                 child: const Text(
                   'SignUp Now',
-                  style: TextStyle(color: ColorConstants.kIndigo),
+                  style: TextStyle(color: ColorConstants.kSkyBlue),
                 ))
           ],
         ),

@@ -763,6 +763,7 @@ mixin _$ProductState {
   bool get isLoaded => throw _privateConstructorUsedError;
   bool get hasReachedMax => throw _privateConstructorUsedError;
   bool get loadMore => throw _privateConstructorUsedError;
+  bool get error => throw _privateConstructorUsedError;
   List<ProductEntity>? get productList => throw _privateConstructorUsedError;
   List<ProductEntity>? get cartList => throw _privateConstructorUsedError;
   ProductEntity? get selectedProduct => throw _privateConstructorUsedError;
@@ -783,6 +784,7 @@ abstract class $ProductStateCopyWith<$Res> {
       bool isLoaded,
       bool hasReachedMax,
       bool loadMore,
+      bool error,
       List<ProductEntity>? productList,
       List<ProductEntity>? cartList,
       ProductEntity? selectedProduct});
@@ -805,6 +807,7 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
     Object? isLoaded = null,
     Object? hasReachedMax = null,
     Object? loadMore = null,
+    Object? error = null,
     Object? productList = freezed,
     Object? cartList = freezed,
     Object? selectedProduct = freezed,
@@ -825,6 +828,10 @@ class _$ProductStateCopyWithImpl<$Res, $Val extends ProductState>
       loadMore: null == loadMore
           ? _value.loadMore
           : loadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as bool,
       productList: freezed == productList
           ? _value.productList
@@ -855,6 +862,7 @@ abstract class _$$ProductStateImplCopyWith<$Res>
       bool isLoaded,
       bool hasReachedMax,
       bool loadMore,
+      bool error,
       List<ProductEntity>? productList,
       List<ProductEntity>? cartList,
       ProductEntity? selectedProduct});
@@ -875,6 +883,7 @@ class __$$ProductStateImplCopyWithImpl<$Res>
     Object? isLoaded = null,
     Object? hasReachedMax = null,
     Object? loadMore = null,
+    Object? error = null,
     Object? productList = freezed,
     Object? cartList = freezed,
     Object? selectedProduct = freezed,
@@ -895,6 +904,10 @@ class __$$ProductStateImplCopyWithImpl<$Res>
       loadMore: null == loadMore
           ? _value.loadMore
           : loadMore // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
               as bool,
       productList: freezed == productList
           ? _value._productList
@@ -920,6 +933,7 @@ class _$ProductStateImpl implements _ProductState {
       this.isLoaded = false,
       this.hasReachedMax = false,
       this.loadMore = false,
+      this.error = false,
       final List<ProductEntity>? productList,
       final List<ProductEntity>? cartList,
       this.selectedProduct})
@@ -938,6 +952,9 @@ class _$ProductStateImpl implements _ProductState {
   @override
   @JsonKey()
   final bool loadMore;
+  @override
+  @JsonKey()
+  final bool error;
   final List<ProductEntity>? _productList;
   @override
   List<ProductEntity>? get productList {
@@ -963,7 +980,7 @@ class _$ProductStateImpl implements _ProductState {
 
   @override
   String toString() {
-    return 'ProductState(isLoading: $isLoading, isLoaded: $isLoaded, hasReachedMax: $hasReachedMax, loadMore: $loadMore, productList: $productList, cartList: $cartList, selectedProduct: $selectedProduct)';
+    return 'ProductState(isLoading: $isLoading, isLoaded: $isLoaded, hasReachedMax: $hasReachedMax, loadMore: $loadMore, error: $error, productList: $productList, cartList: $cartList, selectedProduct: $selectedProduct)';
   }
 
   @override
@@ -979,6 +996,7 @@ class _$ProductStateImpl implements _ProductState {
                 other.hasReachedMax == hasReachedMax) &&
             (identical(other.loadMore, loadMore) ||
                 other.loadMore == loadMore) &&
+            (identical(other.error, error) || other.error == error) &&
             const DeepCollectionEquality()
                 .equals(other._productList, _productList) &&
             const DeepCollectionEquality().equals(other._cartList, _cartList) &&
@@ -993,6 +1011,7 @@ class _$ProductStateImpl implements _ProductState {
       isLoaded,
       hasReachedMax,
       loadMore,
+      error,
       const DeepCollectionEquality().hash(_productList),
       const DeepCollectionEquality().hash(_cartList),
       selectedProduct);
@@ -1010,6 +1029,7 @@ abstract class _ProductState implements ProductState {
       final bool isLoaded,
       final bool hasReachedMax,
       final bool loadMore,
+      final bool error,
       final List<ProductEntity>? productList,
       final List<ProductEntity>? cartList,
       final ProductEntity? selectedProduct}) = _$ProductStateImpl;
@@ -1022,6 +1042,8 @@ abstract class _ProductState implements ProductState {
   bool get hasReachedMax;
   @override
   bool get loadMore;
+  @override
+  bool get error;
   @override
   List<ProductEntity>? get productList;
   @override

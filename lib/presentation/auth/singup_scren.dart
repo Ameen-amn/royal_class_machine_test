@@ -24,7 +24,7 @@ class SignUpScreen extends StatelessWidget {
           child: BlocConsumer<AuthBloc, AuthState>(
             listener: (context, state) {
               if (state.isLoggedIn) {
-                () => Navigator.of(context).pushNamed(HomeScreen.routeName);
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
               }
               if (state.onError) {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -33,11 +33,14 @@ class SignUpScreen extends StatelessWidget {
             },
             builder: (context, state) {
               if (state.isLoading) {
-                return const Center(
-                    child: CircularProgressIndicator(
-                  color: ColorConstants.kSkyBlue,
-                  strokeWidth: 5,
-                ));
+                return SizedBox(
+                  height: MediaQuery.sizeOf(context).height,
+                  child: const Center(
+                      child: CircularProgressIndicator(
+                    color: ColorConstants.kSkyBlue,
+                    strokeWidth: 5,
+                  )),
+                );
               }
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +64,6 @@ class SignUpScreen extends StatelessWidget {
                         decoration: kTextFieldBoxDecoratioin.copyWith(
                             hintText: 'Jhon Dave')),
                   ),
-                 
                   Padding(
                       padding: const EdgeInsets.fromLTRB(0, 25, 0, 6),
                       child: Text('Email', style: textStyle.displaySmall)),
@@ -96,18 +98,28 @@ class SignUpScreen extends StatelessWidget {
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 50),
-                      child: ElevatedButton(
-                        child: const Text('Sign Up'),
-                        onPressed: () {
-                          BlocProvider.of<AuthBloc>(context)
-                              .add(AuthEvent.signUpUser(
-                            // fullName: nameController.text,
-                            email: emailController.text,
-                            // phoneNumber: phoneNumController.text,
-                            password: passwordController.text,
-                            confirmPassowrd: confirmPasswordController.text,
-                          ));
-                        },
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10)),
+                        gradient: ColorConstants.kIconGradient),
+                        child: ElevatedButton(
+                           style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              shadowColor: Colors.transparent,
+                              surfaceTintColor: Colors.transparent),
+                          child:  Text('Sign Up',style: textStyle.headlineLarge,),
+                          onPressed: () {
+                            BlocProvider.of<AuthBloc>(context)
+                                .add(AuthEvent.signUpUser(
+                              // fullName: nameController.text,
+                              email: emailController.text,
+                              // phoneNumber: phoneNumController.text,
+                              password: passwordController.text,
+                              confirmPassowrd: confirmPasswordController.text,
+                            ));
+                          },
+                        ),
                       ),
                     ),
                   ),

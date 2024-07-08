@@ -8,8 +8,9 @@ class TextthemeConstants {
           fontWeight: FontWeight.w600,
           color: ColorConstants.kDartGrey),
       bodyMedium: TextStyle(color: ColorConstants.kDeactive, fontSize: 20),
-      displaySmall:
-          const TextStyle(color: ColorConstants.kBlack, fontSize: 14),
+      displaySmall: const TextStyle(color: ColorConstants.kBlack, fontSize: 14),
       bodySmall:
-          const TextStyle(color: ColorConstants.kHintColor, fontSize: 14));
+          const TextStyle(color: ColorConstants.kHintColor, fontSize: 14),
+      headlineLarge: const TextStyle(
+          color: ColorConstants.kWhite, fontWeight: FontWeight.bold));
 }

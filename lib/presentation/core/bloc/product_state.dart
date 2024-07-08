@@ -7,6 +7,7 @@ class ProductState with _$ProductState {
     @Default(false) bool isLoaded,
     @Default(false) bool hasReachedMax,
     @Default(false) bool loadMore,
+    @Default(false) bool error,
     List<ProductEntity>? productList,
     List<ProductEntity>? cartList,
     ProductEntity? selectedProduct

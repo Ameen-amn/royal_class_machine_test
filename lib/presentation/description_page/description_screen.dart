@@ -53,23 +53,28 @@ class DetailScreen extends StatelessWidget {
                       child: CircularProgressIndicator(
                           color: ColorConstants.kSkyBlue, strokeWidth: 5),
                     )
-                  : Column(
-                      children: [
-                        CustomCarouselSlider(
-                          imageList: state.selectedProduct?.image ?? [],
-                        ),
-                        const Spacer(),
-                        DetailWidget(
-                          title: state.selectedProduct?.title ?? '',
-                          description: state.selectedProduct?.description ?? '',
+                  : state.error
+                      ? const Center(
+                          child: Text("Error Occured !"),
                         )
-                      ],
-                    )
+                      : Column(
+                          children: [
+                            CustomCarouselSlider(
+                              imageList: state.selectedProduct?.image ?? [],
+                            ),
+                            const Spacer(),
+                            DetailWidget(
+                              title: state.selectedProduct?.title ?? '',
+                              description:
+                                  state.selectedProduct?.description ?? '',
+                            )
+                          ],
+                        )
             ],
           ),
-          bottomNavigationBar: DetailBottomBar(
-            prince: state.selectedProduct?.price ?? 0
-          ),
+          bottomNavigationBar: state.isLoaded && !state.error
+              ? DetailBottomBar(prince: state.selectedProduct?.price ?? 0)
+              : null,
         );
       },
     );

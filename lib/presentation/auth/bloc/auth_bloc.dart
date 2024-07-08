@@ -36,8 +36,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       authResponse.fold(
         (l) => emit(
             state.copyWith(onError: true, isLoading: false, isLoaded: true)),
-        (r) => emit(
-            state.copyWith(isLoaded: true, isLoading: false, isLoggedIn: true)),
+        (r) => emit(state.copyWith(
+            isLoaded: true,
+            isLoading: false,
+            isLoggedIn: true,
+            onError: false)),
       );
     });
   }
