@@ -11,7 +11,6 @@ class SignUpScreen extends StatelessWidget {
   static const String routeName = '/SignUpscren';
   SignUpScreen({super.key});
   final nameController = TextEditingController();
-  final phoneNumController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
@@ -62,17 +61,7 @@ class SignUpScreen extends StatelessWidget {
                         decoration: kTextFieldBoxDecoratioin.copyWith(
                             hintText: 'Jhon Dave')),
                   ),
-                  Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 6),
-                      child:
-                          Text('Mobile Number', style: textStyle.displaySmall)),
-                  SizedBox(
-                    height: 50,
-                    child: TextField(
-                        controller: phoneNumController,
-                        decoration: kTextFieldBoxDecoratioin.copyWith(
-                            hintText: '+966')),
-                  ),
+                 
                   Padding(
                       padding: const EdgeInsets.fromLTRB(0, 25, 0, 6),
                       child: Text('Email', style: textStyle.displaySmall)),

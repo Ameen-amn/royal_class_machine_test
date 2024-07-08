@@ -14,7 +14,7 @@ class ProductRemoteDataSourceImpl implements ProdcutLocalDataSoruce {
   Future<ProductModel> getProductDetail(String id) async {
     if (_cacheBox.isNotEmpty) {
       final ProductModel product = ProductModel.fromJson(_cacheBox.get(id));
-    
+
       return product;
     } else {
       throw Exception('Failed to load product detail');
@@ -23,14 +23,13 @@ class ProductRemoteDataSourceImpl implements ProdcutLocalDataSoruce {
 
   @override
   Future<List<ProductModel>> getProducts() async {
-   
     if (_cacheBox.isNotEmpty) {
       List<ProductModel> productList = [];
 
       for (var element in _cacheBox.keys) {
         productList.add(ProductModel.fromJson(_cacheBox.get(element)));
 
-        print(productList.first);
+        print('local:${productList.first.title}');
       }
 
       return productList;
