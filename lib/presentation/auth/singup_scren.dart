@@ -39,9 +39,12 @@ class SignUpScreen extends StatelessWidget {
                         child: Text('Great to see you here 🤝',
                             style: textStyle.displayLarge)),
                   ),
-                  const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 65, 0, 6),
-                      child: Text('Full Name')),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 40, 0, 6),
+                      child: Text(
+                        'Full Name',
+                        style: textStyle.displaySmall,
+                      )),
                   SizedBox(
                     height: 50,
                     child: TextField(
@@ -49,9 +52,10 @@ class SignUpScreen extends StatelessWidget {
                         decoration: kTextFieldBoxDecoratioin.copyWith(
                             hintText: 'Jhon Dave')),
                   ),
-                  const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 25, 0, 6),
-                      child: Text('Mobile Number')),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 6),
+                      child:
+                          Text('Mobile Number', style: textStyle.displaySmall)),
                   SizedBox(
                     height: 50,
                     child: TextField(
@@ -59,12 +63,9 @@ class SignUpScreen extends StatelessWidget {
                         decoration: kTextFieldBoxDecoratioin.copyWith(
                             hintText: '+966')),
                   ),
-                  const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 25, 0, 6),
-                      child: Text(
-                        'Email',
-                        style: TextStyle(color: ColorConstants.kBlack),
-                      )),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 6),
+                      child: Text('Email', style: textStyle.displaySmall)),
                   SizedBox(
                     height: 50,
                     child: TextField(
@@ -72,9 +73,9 @@ class SignUpScreen extends StatelessWidget {
                         decoration: kTextFieldBoxDecoratioin.copyWith(
                             hintText: 'Jack@gmail.com')),
                   ),
-                  const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 25, 0, 6),
-                      child: Text('Password')),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 6),
+                      child: Text('Password', style: textStyle.displaySmall)),
                   SizedBox(
                       height: 50,
                       child: TextField(
@@ -82,9 +83,10 @@ class SignUpScreen extends StatelessWidget {
                           decoration: kTextFieldBoxDecoratioin.copyWith(
                               hintText: 'Enter your password'),
                           obscureText: true)),
-                  const Padding(
-                      padding: EdgeInsets.fromLTRB(0, 25, 0, 6),
-                      child: Text('Confirm Password')),
+                  Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 6),
+                      child: Text('Confirm Password',
+                          style: textStyle.displaySmall)),
                   SizedBox(
                       height: 50,
                       child: TextField(
@@ -92,21 +94,23 @@ class SignUpScreen extends StatelessWidget {
                           decoration: kTextFieldBoxDecoratioin.copyWith(
                               hintText: 'Confirm your password'),
                           obscureText: true)),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: ElevatedButton(
-                      child: const Text('Sign Up'),
-                      onPressed: () {
-                        BlocProvider.of<AuthBloc>(context)
-                            .add(AuthEvent.signUpUser(
-                          // fullName: nameController.text,
-                          email: emailController.text,
-                          // phoneNumber: phoneNumController.text,
-                          password: passwordController.text,
-                          confirmPassowrd: confirmPasswordController.text,
-                        ));
-                        Navigator.of(context).popAndPushNamed('newRoute');
-                      },
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: ElevatedButton(
+                        child: const Text('Sign Up'),
+                        onPressed: () {
+                          BlocProvider.of<AuthBloc>(context)
+                              .add(AuthEvent.signUpUser(
+                            // fullName: nameController.text,
+                            email: emailController.text,
+                            // phoneNumber: phoneNumController.text,
+                            password: passwordController.text,
+                            confirmPassowrd: confirmPasswordController.text,
+                          ));
+                          Navigator.of(context).popAndPushNamed('newRoute');
+                        },
+                      ),
                     ),
                   ),
                   Padding(

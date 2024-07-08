@@ -4,7 +4,8 @@ import 'package:royal_class/presentation/core/widget/texttheme.dart';
 
 final kTextFieldBoxDecoratioin = InputDecoration(
     fillColor: ColorConstants.kWhite,
-    hintStyle: TextthemeConstants.textTheme.displaySmall,
+
+    hintStyle: TextthemeConstants.textTheme.bodySmall,
     enabledBorder: const OutlineInputBorder(
       borderSide: BorderSide(
         color: ColorConstants.kBorderColor,

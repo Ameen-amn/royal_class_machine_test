@@ -64,9 +64,12 @@ class LoginFormScreen extends StatelessWidget {
           child: Center(
               child: Text('Welcome Back 👋', style: textTheme.displayLarge)),
         ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(0, 44, 0, 6),
-          child: Text('Email Id'),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 44, 0, 6),
+          child: Text(
+            'Email Id',
+            style: textTheme.displaySmall,
+          ),
         ),
         SizedBox(
           height: 50,
@@ -77,9 +80,12 @@ class LoginFormScreen extends StatelessWidget {
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.fromLTRB(0, 10, 0, 6),
-          child: Text('Password'),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 6),
+          child: Text(
+            'Password',
+            style: textTheme.displaySmall,
+          ),
         ),
         SizedBox(
           height: 50,
@@ -90,15 +96,6 @@ class LoginFormScreen extends StatelessWidget {
             obscureText: true,
           ),
         ),
-        // Align(
-        //   alignment: Alignment.centerRight,
-        //   child: TextButton(
-        //       onPressed: () {},
-        //       child: const Text(
-        //         'Forgot Password?',
-        //         style: TextStyle(color: ColorConstants.kbuttonTextColor),
-        //       )),
-        // ),
         Center(
           child: Padding(
             padding: const EdgeInsets.only(top: 50, bottom: 45),
@@ -121,7 +118,8 @@ class LoginFormScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.black)),
             ])),
             TextButton(
-                onPressed: () => Navigator.of(context).pushNamed(SignUpScreen.routeName),
+                onPressed: () =>
+                    Navigator.of(context).pushNamed(SignUpScreen.routeName),
                 child: const Text(
                   'SignUp Now',
                   style: TextStyle(color: ColorConstants.kIndigo),

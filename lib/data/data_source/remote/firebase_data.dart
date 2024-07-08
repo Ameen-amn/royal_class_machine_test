@@ -8,9 +8,9 @@ abstract class AuthRemoteDataSource {
 
 @Injectable(as: AuthRemoteDataSource)
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-  final FirebaseAuth firebaseAuth;
+  final FirebaseAuth firebaseAuth=FirebaseAuth.instance;
 
-  AuthRemoteDataSourceImpl({required this.firebaseAuth});
+  AuthRemoteDataSourceImpl();
 
   @override
   Future<User> signInWithEmailAndPassword(String email, String password) async {
@@ -26,6 +26,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<User> signUpWithEmailAndPassword(String email, String password) async {
     UserCredential userCredential = await firebaseAuth
         .createUserWithEmailAndPassword(email: email, password: password);
+    print(userCredential.user);
     return userCredential.user!;
   }
 }
