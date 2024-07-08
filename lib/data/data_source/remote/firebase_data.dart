@@ -21,7 +21,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       UserCredential userCredential = await firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      print(userCredential.user);
       return right(userCredential.user!);
     } catch (e) {
       return left(Exception());
@@ -34,7 +33,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       UserCredential userCredential = await firebaseAuth
           .createUserWithEmailAndPassword(email: email, password: password);
-      print(userCredential.user);
       return right(userCredential.user!);
     } catch (e) {
       return left(Exception());

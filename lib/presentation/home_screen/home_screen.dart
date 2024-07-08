@@ -11,7 +11,7 @@ import 'package:royal_class/presentation/home_screen/widget/carousel_card.dart';
 import 'package:royal_class/presentation/home_screen/widget/item_card.dart';
 
 class HomeScreen extends StatefulWidget {
- static const  String routeName='HomeScreen';
+  static const String routeName = 'HomeScreen';
   const HomeScreen({super.key});
 
   @override
@@ -26,10 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
+// using lazy loading to fetch more product item from local storage as user reaches at the bottom of page while scrolling
   void _onScroll() {
     if (_scrollController.position.pixels ==
         _scrollController.position.maxScrollExtent) {
-      print('event call');
       BlocProvider.of<ProductBloc>(context)
           .add(const ProductEvent.lazyLoadProducts());
     }
@@ -78,9 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (state.isLoading) {
                         return const Center(
                           child: CircularProgressIndicator(
-                            color: ColorConstants.kSkyBlue,
-                            strokeWidth: 5
-                          ),
+                              color: ColorConstants.kSkyBlue, strokeWidth: 5),
                         );
                       }
                       if (state.isLoaded) {
@@ -118,9 +116,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             if (state.loadMore)
                               const Center(
                                 child: CircularProgressIndicator(
-                                  color: ColorConstants.kSkyBlue,
-                                  strokeWidth: 5
-                                ),
+                                    color: ColorConstants.kSkyBlue,
+                                    strokeWidth: 5),
                               )
                           ],
                         );

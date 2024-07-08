@@ -18,8 +18,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final authResponse = await usecase.signUpUser(
             email: event.email, password: event.password);
         authResponse.fold(
+          //failed creating new user
           (l) => emit(
               state.copyWith(onError: true, isLoading: false, isLoaded: true)),
+          // Created new user
           (r) => emit(state.copyWith(
               isLoaded: true,
               isLoading: false,
@@ -28,14 +30,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         );
       }
     });
+
+    // Signing In existing user
     on<_SingIn>((event, emit) async {
       emit(state.copyWith(isLoading: true));
 
       final authResponse = await usecase.signInUser(
           email: event.email, password: event.password);
       authResponse.fold(
+        // Failed in signing in user
         (l) => emit(
             state.copyWith(onError: true, isLoading: false, isLoaded: true)),
+        // Success in signing in user
         (r) => emit(state.copyWith(
             isLoaded: true,
             isLoading: false,

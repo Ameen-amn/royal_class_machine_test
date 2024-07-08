@@ -32,8 +32,6 @@ class ProductRemoteDataSourceImpl implements ProdcutLocalDataSoruce {
 
       for (var element in _cacheBox.keys) {
         productList.add(ProductModel.fromJson(_cacheBox.get(element)));
-
-        print('local:${productList.first.title}');
       }
 
       return productList;
