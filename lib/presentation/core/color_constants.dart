@@ -8,6 +8,7 @@ class ColorConstants {
   static const Color kDimBlack = Color(0xff222834);
   static const Color kWhite = Color(0xffffffff);
   static const Color kBlack = Color(0xff000000);
+  static const Color kRed = Colors.red;
   static final Color kDeactive = kWhite.withOpacity(0.6);
   static const Color kBackgroundColor = Color(0xff242C3B);
   static const Color kdetailBottomBar = Color(0xff262E3D);

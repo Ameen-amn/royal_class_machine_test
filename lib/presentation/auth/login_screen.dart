@@ -24,8 +24,11 @@ class LoginScreen extends StatelessWidget {
                   Navigator.of(context).pushNamed(HomeScreen.routeName);
                 }
                 if (state.onError) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Failed!! Try again')));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Failed!! Try again',
+                        style: TextthemeConstants.textTheme.headlineSmall),
+                    backgroundColor: ColorConstants.kRed,
+                  ));
                 }
               },
               builder: (context, state) {

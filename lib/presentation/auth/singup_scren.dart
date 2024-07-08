@@ -27,8 +27,13 @@ class SignUpScreen extends StatelessWidget {
                 Navigator.of(context).pushNamed(HomeScreen.routeName);
               }
               if (state.onError) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Failed!! Try again')));
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                    'Failed!! Try again',
+                    style: textStyle.headlineLarge,
+                  ),
+                  backgroundColor: ColorConstants.kRed,
+                ));
               }
             },
             builder: (context, state) {
@@ -100,15 +105,18 @@ class SignUpScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 50),
                       child: DecoratedBox(
                         decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10)),
-                        gradient: ColorConstants.kIconGradient),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(10)),
+                            gradient: ColorConstants.kIconGradient),
                         child: ElevatedButton(
-                           style: ElevatedButton.styleFrom(
+                          style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.transparent,
                               shadowColor: Colors.transparent,
                               surfaceTintColor: Colors.transparent),
-                          child:  Text('Sign Up',style: textStyle.headlineLarge,),
+                          child: Text(
+                            'Sign Up',
+                            style: textStyle.headlineLarge,
+                          ),
                           onPressed: () {
                             BlocProvider.of<AuthBloc>(context)
                                 .add(AuthEvent.signUpUser(
