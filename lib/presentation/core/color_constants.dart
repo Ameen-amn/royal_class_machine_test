@@ -18,6 +18,9 @@ class ColorConstants {
   static const Color kButtonlightShadow = Color(0xff38445A);
   static const Color kInnerButtonlightShadow = Color(0xff364055);
 
+  static const Color kBorderColor = Color(0xffE2E8F0);
+  static const Color kbuttonTextColor = Color(0xff3C9AFB);
+
   static final LinearGradient kCardGradient = LinearGradient(colors: [
     const Color(0xff363e51).withOpacity(0.8),
     const Color(0xff192e26).withOpacity(0.8)

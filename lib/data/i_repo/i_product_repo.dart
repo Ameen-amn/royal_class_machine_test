@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:royal_class/data/data_source/local_data.dart';
-import 'package:royal_class/data/data_source/remote_data.dart';
+import 'package:royal_class/data/data_source/remote/remote_data.dart';
 import 'package:royal_class/domain/entity/product_entity.dart';
 import 'package:royal_class/domain/repository/product_repository.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

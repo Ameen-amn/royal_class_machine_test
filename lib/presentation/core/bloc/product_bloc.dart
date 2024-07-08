@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:royal_class/data/model/product_model.dart';
 import 'package:royal_class/domain/entity/product_entity.dart';
 import 'package:royal_class/domain/usecase/produt_usecase.dart';
 
@@ -12,7 +11,7 @@ part 'product_state.dart';
 
 @Injectable()
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
-  final ProdutUsecase produtUsecase;
+  final Usecase produtUsecase;
   static const int productsPerPage = 8;
   List<ProductEntity> allProducts = [];
   int currentPage = 1;
@@ -50,6 +49,5 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(state.copyWith(isLoading: false, selectedProduct: productDetail));
       },
     );
-    
   }
 }
