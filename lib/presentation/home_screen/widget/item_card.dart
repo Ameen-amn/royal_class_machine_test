@@ -31,9 +31,7 @@ class ItemCard extends StatelessWidget {
                       return ColorConstants.kIconGradient.createShader(
                           Rect.fromLTWH(0, 0, bounds.width, bounds.height));
                     },
-                    child: SvgPicture.asset(
-                      ImageConstants.kHeart
-                    ),
+                    child: SvgPicture.asset(ImageConstants.kHeart),
                   )),
               product?.image[0].contains('[')
                   ? const SizedBox(
@@ -99,7 +97,7 @@ class DiagonalShapePainter extends CustomPainter {
 
     // Define the custom path within the rounded rectangle
     Path path = Path();
-    path.moveTo(0, size.height * sideHeightTopPercentage);
+    path.moveTo(15, size.height * sideHeightTopPercentage);
     path.lineTo(
         size.width - rrect.trRadiusX, 0); // Top-right corner before radius
     path.quadraticBezierTo(
@@ -115,12 +113,12 @@ class DiagonalShapePainter extends CustomPainter {
     path.quadraticBezierTo(
         0, size.height, 0, size.height - rrect.blRadiusY); // Bottom-left curve
     path.lineTo(0,
-        size.height * sideHeightTopPercentage + rrect.tlRadiusY); // Left side
+        size.height * sideHeightTopPercentage + (rrect.tlRadiusY)); // Left side
     path.quadraticBezierTo(
         0,
         size.height * sideHeightTopPercentage,
         rrect.tlRadiusX,
-        size.height * sideHeightTopPercentage - 0); // Top-left curve
+        size.height * sideHeightTopPercentage); // Top-left curve
     path.close();
 
     // Draw the path

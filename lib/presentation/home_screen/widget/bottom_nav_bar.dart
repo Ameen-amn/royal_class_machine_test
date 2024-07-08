@@ -125,7 +125,7 @@ class NavBarSelectedItem extends CustomPainter {
 
     // Define the custom path within the rounded rectangle
     Path path = Path();
-    path.moveTo(0, size.height * sideHeightTopPercentage);
+    path.moveTo(12, size.height * sideHeightTopPercentage);
     path.lineTo(
         size.width - rrect.trRadiusX, 0); // Top-right corner before radius
     path.quadraticBezierTo(
